@@ -1,0 +1,134 @@
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasyDB.ldf
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasyDB.mdf
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.exe
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.deps.json
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.runtimeconfig.json
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.runtimeconfig.dev.json
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Azure.Core.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Azure.Identity.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Core.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Core.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.csproj.AssemblyReference.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.AssemblyInfoInputs.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.AssemblyInfo.cs
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.csproj.CoreCompileInputs.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.csproj.CopyComplete
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.genruntimeconfig.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasyDB.ldf
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasyDB.mdf
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.exe
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.deps.json
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.runtimeconfig.json
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.runtimeconfig.dev.json
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ConsoleTest.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Azure.Core.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Azure.Identity.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Core.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Core.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.csproj.AssemblyReference.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.AssemblyInfoInputs.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.AssemblyInfo.cs
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.csproj.CoreCompileInputs.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.csproj.CopyComplete
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ConsoleTest\obj\Debug\netcoreapp3.1\ConsoleTest.genruntimeconfig.cache

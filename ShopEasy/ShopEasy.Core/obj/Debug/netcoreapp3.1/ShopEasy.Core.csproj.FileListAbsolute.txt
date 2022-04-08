@@ -1,0 +1,10 @@
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\bin\Debug\netcoreapp3.1\ShopEasy.Core.deps.json
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\bin\Debug\netcoreapp3.1\ShopEasy.Core.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\bin\Debug\netcoreapp3.1\ShopEasy.Core.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.csproj.AssemblyReference.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.AssemblyInfoInputs.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.AssemblyInfo.cs
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.csproj.CoreCompileInputs.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Core\obj\Debug\netcoreapp3.1\ShopEasy.Core.pdb

@@ -1,0 +1,30 @@
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasyDB.ldf
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasyDB.mdf
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.deps.json
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Core.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Core.pdb
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.AssemblyInfo.cs
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.csproj.CopyComplete
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.dll
+C:\Users\Tyler\OneDrive - UWSP\2022 Spring\CIS 340 - Adv Techniqs App Dev\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasyDB.ldf
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasyDB.mdf
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.deps.json
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Infrastructure.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Core.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\bin\Debug\netcoreapp3.1\ShopEasy.Core.pdb
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.AssemblyInfo.cs
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.csproj.CopyComplete
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.dll
+C:\Users\Tyler\Documents\Repos\CIS340-Project\ShopEasy\ShopEasy.Infrastructure\obj\Debug\netcoreapp3.1\ShopEasy.Infrastructure.pdb
