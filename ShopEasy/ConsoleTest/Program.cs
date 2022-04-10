@@ -14,6 +14,7 @@ namespace ConsoleTest
             Console.WriteLine($"User 2 is an admin: {isAdmin}");
             User user = UserContext.GetUser(1);
             Console.WriteLine($"User 1 username: {user.UserName}");
+            Console.WriteLine("Press any key to end.");
             Console.ReadKey(); //keep console open until user presses a key
         }
     }
