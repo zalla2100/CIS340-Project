@@ -11,9 +11,9 @@ namespace ShopEasy.Infrastructure
         public static bool IsUserAdmin(int userId)
         {
             string selectStatement =
-                "SELECT Id " +
+                "SELECT UserId " +
                 "FROM Admin " +
-                "WHERE ID = @UserId";
+                "WHERE UserId = @UserId";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
             using SqlCommand command = new SqlCommand(selectStatement, connection);
             command.Parameters.AddWithValue("@UserId", userId);
