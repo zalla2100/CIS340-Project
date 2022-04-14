@@ -60,5 +60,33 @@ namespace ShopEasy.Infrastructure
             }
             return user;
         }
+
+        public static User GetUser(string userName, string password)
+        {
+            User user = null;
+            string selectStatement =
+                "SELECT Id, UserName, Password " +
+                "FROM Users " +
+                "WHERE UserName = @UserName " +
+                "AND Password = @Password";
+            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
+            using SqlCommand command = new SqlCommand(selectStatement, connection);
+            command.Parameters.AddWithValue("@UserName", userName);
+            command.Parameters.AddWithValue("@Password", password);
+            connection.Open();
+
+            using SqlDataReader reader = command.ExecuteReader(
+                CommandBehavior.SingleRow & CommandBehavior.CloseConnection);
+            if (reader.Read())
+            {
+                user = new User
+                {
+                    Id = (int)reader["Id"],
+                    UserName = reader["UserName"].ToString(),
+                    Password = reader["Password"].ToString()
+                };
+            }
+            return user;
+        }
     }
 }
