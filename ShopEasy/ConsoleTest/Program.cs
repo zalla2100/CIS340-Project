@@ -1,6 +1,7 @@
 ﻿using ShopEasy.Core;
 using ShopEasy.Infrastructure;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleTest
 {
@@ -24,7 +25,25 @@ namespace ConsoleTest
             Console.WriteLine($"Email of customer id {user.Id}: {customer.EmailAddress}");
             Console.WriteLine($"Is customer id {user.Id} senior: {customer.IsSenior}");
 
-            Console.WriteLine("Press any key to end.");
+            //Invoice newInvoice = new Invoice
+            //{
+            //    CustomerId = 2,
+            //    ProductId = 1, //need to add product
+            //    Quantity = 1,
+            //    TotalValue = 0.00, //correct after adding product
+            //    TimeStamp = DateTime.Now
+            //};
+            //Console.WriteLine($"successfully added invoice: {InvoiceContext.AddInvoice(newInvoice)}");
+
+            List<Invoice> invoices = InvoiceContext.GetAllInvoices();
+            Console.WriteLine($"There are {invoices.Count} invoices.");
+
+            if(invoices.Count > 0)
+            {
+                Console.WriteLine($"Invoice 1 total value: {invoices[0].TotalValue}");
+            }
+
+            Console.WriteLine("\nPress any key to end.");
             Console.ReadKey(); //keep console open until user presses a key
         }
     }
