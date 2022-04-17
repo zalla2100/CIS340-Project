@@ -11,19 +11,36 @@ namespace ConsoleTest
         {
             bool isAdmin = AdminContext.IsUserAdmin(1);
             Console.WriteLine($"User 1 is an admin: {isAdmin}");
+
             isAdmin = AdminContext.IsUserAdmin(2);
             Console.WriteLine($"User 2 is an admin: {isAdmin}");
+
             User user = UserContext.GetUser(1);
             Console.WriteLine($"User 1 username: {user.UserName}");
 
             user = UserContext.GetUser("ShopEasyAdmin", "Admin123");
             Console.WriteLine($"User id of \"ShopEasyAdmin\": {user.Id}");
+
             user = UserContext.GetUser("TyDunn", "password");
             Console.WriteLine($"User id of \"TyDunn\": {user.Id}");
 
             Customer customer = CustomerContext.GetCustomer(user.Id);
             Console.WriteLine($"Email of customer id {user.Id}: {customer.EmailAddress}");
             Console.WriteLine($"Is customer id {user.Id} senior: {customer.IsSenior}");
+
+            customer.LastName = "Dunham";
+            customer.EmailAddress = "tdunham@example.com";
+            user.UserName = "TyDunham";
+            Console.WriteLine($"Successfully updated customer {customer.Id}: {CustomerContext.UpdateCustomer(customer)}");
+            Console.WriteLine($"Successfully updated user {user.Id}: {UserContext.UpdateUser(user)}");
+
+            //Console.WriteLine($"setting values for user/customer {user.Id} back to original.");
+
+            //customer.LastName = "Dunn";
+            //customer.EmailAddress = "tdunn@example.com";
+            //user.UserName = "TyDunn";
+            //Console.WriteLine($"Successfully updated customer {customer.Id}: {CustomerContext.UpdateCustomer(customer)}");
+            //Console.WriteLine($"Successfully updated user {user.Id}: {UserContext.UpdateUser(user)}");
 
             //Invoice newInvoice = new Invoice
             //{

@@ -14,4 +14,12 @@ namespace ShopEasy.Core
         public bool IsVeteran { get; set; }
         public bool IsSenior { get; set; }
     }
+
+    //public static class Convert
+    //{
+    //    public static int BooleanToInt(bool b)
+    //    {
+    //        return b ? 1 : 0;
+    //    }
+    //}
 }

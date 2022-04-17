@@ -38,5 +38,42 @@ namespace ShopEasy.Infrastructure
             }
             return customer;
         }
+
+        public static bool UpdateCustomer(Customer customer)
+        {
+            int numUpdated = 0;
+
+            string updateStatment = "UPDATE Customers " +
+                "SET FirstName = '@FirstName', " +
+                    "LastName = '@LastName', " +
+                    "EmailAddress = '@EmailAddress', " +
+                    "PhoneNumber = '@PhoneNumber', " +
+                    "IsVeteran = @IsVeteran, " +
+                    "IsSenior = @IsSenior " +
+                "WHERE Id = @UserId";
+
+            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
+            using SqlCommand command = new SqlCommand(updateStatment, connection);
+            command.Parameters.AddWithValue("@UserId", customer.Id);
+            command.Parameters.AddWithValue("@FirstName", customer.FirstName);
+            command.Parameters.AddWithValue("@LastName", customer.LastName);
+            command.Parameters.AddWithValue("@EmailAddress", customer.EmailAddress);
+            command.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+            command.Parameters.AddWithValue("@IsVeteran", Convert.ToByte(customer.IsVeteran));
+            command.Parameters.AddWithValue("@IsSenior", Convert.ToByte(customer.IsSenior));
+            connection.Open();
+
+            try
+            {
+                numUpdated = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to update customer {customer.Id}:\n\t{ex.Message}");
+            }
+
+            connection.Close();
+            return numUpdated == 1;
+        }
     }
 }

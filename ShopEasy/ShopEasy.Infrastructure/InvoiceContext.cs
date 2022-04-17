@@ -65,6 +65,7 @@ namespace ShopEasy.Infrastructure
                 Console.WriteLine($"Failed to insert invoice:\n\t{ex.Message}");
             }
 
+            connection.Close();
             return numInserted == 1;
         }
     }

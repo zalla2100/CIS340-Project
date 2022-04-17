@@ -88,5 +88,34 @@ namespace ShopEasy.Infrastructure
             }
             return user;
         }
+
+        public static bool UpdateUser(User user)
+        {
+            int numUpdated = 0;
+
+            string updateStatment = "UPDATE Users " +
+                "SET UserName = '@UserName', " +
+                    "Password = '@Password' " +
+                "WHERE Id = @UserId";
+
+            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
+            using SqlCommand command = new SqlCommand(updateStatment, connection);
+            command.Parameters.AddWithValue("@UserId", user.Id);
+            command.Parameters.AddWithValue("@UserName", user.UserName);
+            command.Parameters.AddWithValue("@Password", user.Password);
+            connection.Open();
+
+            try
+            {
+                numUpdated = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to update user {user.Id}:\n\t{ex.Message}");
+            }
+
+            connection.Close();
+            return numUpdated == 1;
+        }
     }
 }

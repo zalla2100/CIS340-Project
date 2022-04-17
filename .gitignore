@@ -1,0 +1,16 @@
+/ShopEasy/ConsoleTest/bin/
+/ShopEasy/ConsoleTest/obj/
+
+/ShopEasy/ShopEasy.Core/bin/
+/ShopEasy/ShopEasy.Core/obj/
+
+/ShopEasy/ShopEasy.Infrastructure/bin/
+/ShopEasy/ShopEasy.Infrastructure/obj/
+
+/ShopEasy/ShopEasy.Test/bin/
+/ShopEasy/ShopEasy.Test/obj/
+
+/ShopEasy/ShopEasy.UI/bin/
+/ShopEasy/ShopEasy.UI/obj/
+
+*.bak
