@@ -21,8 +21,7 @@ namespace ConsoleTest
             user = UserContext.GetUser("ShopEasyAdmin", "Admin123");
             Console.WriteLine($"User id of \"ShopEasyAdmin\": {user.Id}");
 
-            user = UserContext.GetUser("TyDunn", "password");
-            Console.WriteLine($"User id of \"TyDunn\": {user.Id}");
+            user = UserContext.GetUser(2);
 
             Customer customer = CustomerContext.GetCustomer(user.Id);
             Console.WriteLine($"Email of customer id {user.Id}: {customer.EmailAddress}");
@@ -30,17 +29,29 @@ namespace ConsoleTest
 
             customer.LastName = "Dunham";
             customer.EmailAddress = "tdunham@example.com";
+            customer.IsSenior = false;
             user.UserName = "TyDunham";
             Console.WriteLine($"Successfully updated customer {customer.Id}: {CustomerContext.UpdateCustomer(customer)}");
             Console.WriteLine($"Successfully updated user {user.Id}: {UserContext.UpdateUser(user)}");
 
-            //Console.WriteLine($"setting values for user/customer {user.Id} back to original.");
+            Console.WriteLine($"User id {user.Id} new username: {UserContext.GetUser(2).UserName}");
+            Console.WriteLine($"Customer id {customer.Id} new lastname: {CustomerContext.GetCustomer(2).LastName}");
+            Console.WriteLine($"Customer id {customer.Id} new email: {CustomerContext.GetCustomer(2).EmailAddress}");
+            Console.WriteLine($"Customer id {customer.Id} new senior status: {CustomerContext.GetCustomer(2).IsSenior}");
 
-            //customer.LastName = "Dunn";
-            //customer.EmailAddress = "tdunn@example.com";
-            //user.UserName = "TyDunn";
-            //Console.WriteLine($"Successfully updated customer {customer.Id}: {CustomerContext.UpdateCustomer(customer)}");
-            //Console.WriteLine($"Successfully updated user {user.Id}: {UserContext.UpdateUser(user)}");
+            Console.WriteLine($"setting values for user/customer {user.Id} back to original.");
+
+            customer.LastName = "Dunn";
+            customer.EmailAddress = "tdunn@example.com";
+            user.UserName = "TyDunn";
+            customer.IsSenior = true;
+            Console.WriteLine($"Successfully updated customer {customer.Id}: {CustomerContext.UpdateCustomer(customer)}");
+            Console.WriteLine($"Successfully updated user {user.Id}: {UserContext.UpdateUser(user)}");
+
+            Console.WriteLine($"User id {user.Id} original username: {UserContext.GetUser(2).UserName}");
+            Console.WriteLine($"Customer id {customer.Id} original lastname: {CustomerContext.GetCustomer(2).LastName}");
+            Console.WriteLine($"Customer id {customer.Id} original email: {CustomerContext.GetCustomer(2).EmailAddress}");
+            Console.WriteLine($"Customer id {customer.Id} old senior status: {CustomerContext.GetCustomer(2).IsSenior}");
 
             //Invoice newInvoice = new Invoice
             //{

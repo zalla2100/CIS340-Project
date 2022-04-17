@@ -94,8 +94,8 @@ namespace ShopEasy.Infrastructure
             int numUpdated = 0;
 
             string updateStatment = "UPDATE Users " +
-                "SET UserName = '@UserName', " +
-                    "Password = '@Password' " +
+                "SET UserName = @UserName, " +
+                    "Password = @Password " +
                 "WHERE Id = @UserId";
 
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);

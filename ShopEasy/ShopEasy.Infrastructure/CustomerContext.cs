@@ -44,10 +44,10 @@ namespace ShopEasy.Infrastructure
             int numUpdated = 0;
 
             string updateStatment = "UPDATE Customers " +
-                "SET FirstName = '@FirstName', " +
-                    "LastName = '@LastName', " +
-                    "EmailAddress = '@EmailAddress', " +
-                    "PhoneNumber = '@PhoneNumber', " +
+                "SET FirstName = @FirstName, " +
+                    "LastName = @LastName, " +
+                    "EmailAddress = @EmailAddress, " +
+                    "PhoneNumber = @PhoneNumber, " +
                     "IsVeteran = @IsVeteran, " +
                     "IsSenior = @IsSenior " +
                 "WHERE Id = @UserId";
