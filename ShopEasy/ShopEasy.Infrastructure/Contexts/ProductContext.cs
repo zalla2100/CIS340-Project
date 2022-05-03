@@ -62,5 +62,15 @@ namespace ShopEasy.Infrastructure
             }
             return product;
         }
+
+        //public static bool UpdateProduct()
+        //{
+
+        //}
+
+        //public static bool DeleteProduct()
+        //{
+
+        //}
     }
 }

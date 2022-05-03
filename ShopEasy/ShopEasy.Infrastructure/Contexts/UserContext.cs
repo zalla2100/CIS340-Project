@@ -145,6 +145,11 @@ namespace ShopEasy.Infrastructure
             return numInserted == 1;
         }
 
+        //public static bool DeleteUser()
+        //{
+
+        //}
+
         public static int GetHighestId()
         {
             string selectStatement =

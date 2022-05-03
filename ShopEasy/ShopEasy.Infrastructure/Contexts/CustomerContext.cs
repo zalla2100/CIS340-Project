@@ -106,5 +106,10 @@ namespace ShopEasy.Infrastructure
             connection.Close();
             return numInserted == 1;
         }
+
+        //public static bool DeleteCustomer()
+        //{
+
+        //}
     }
 }

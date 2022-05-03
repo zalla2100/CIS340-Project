@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ShopEasy",
+    "\\ShopEasy\\ConsoleTest",
+    "\\ShopEasy\\ShopEasy",
+    "\\ShopEasy\\ShopEasy.Core",
+    "\\ShopEasy\\ShopEasy.Infrastructure"
   ],
-  "SelectedNode": "\\C:\\Users\\Tyler\\Documents\\Repos\\CIS340-Project",
   "PreviewInSolutionExplorer": false
 }

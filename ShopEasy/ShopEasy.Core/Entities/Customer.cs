@@ -13,6 +13,5 @@ namespace ShopEasy.Core
         public string PhoneNumber { get; set; } //change db schema to be nvarchar(10)
         public bool IsVeteran { get; set; }
         public bool IsSenior { get; set; }
-        //TODO: add property for IsTeacher (bool) here, db schema (bit), and context
     }
 }
