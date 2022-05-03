@@ -14,7 +14,7 @@ namespace ShopEasy.Infrastructure
             List<Invoice> invoices = new List<Invoice>();
 
             string selectStatement =
-                "SELECT Id, CustomerId, ProductId, Quantity, TotalValue, TimeStamp " +
+                "SELECT Id, CustomerId, ProductId, ItemPrice, Quantity, Discount, Tax, SubTotal, TotalValue, TimeStamp " +
                 "FROM Invoices ";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
             using SqlCommand command = new SqlCommand(selectStatement, connection);
@@ -30,7 +30,11 @@ namespace ShopEasy.Infrastructure
                         Id = (int)reader["Id"],
                         CustomerId = (int)reader["CustomerId"],
                         ProductId = (int)reader["ProductId"],
+                        ItemPrice = (int)reader["ItemPrice"],
                         Quantity = (int)reader["Quantity"],
+                        Discount = (int)reader["Discount"],
+                        Tax = (int)reader["Tax"],
+                        SubTotal = (int)reader["SubTotal"],
                         TotalValue = (double)reader["TotalValue"],
                         TimeStamp = (DateTime)reader["TimeStamp"]
                     }
@@ -45,13 +49,17 @@ namespace ShopEasy.Infrastructure
             int numInserted = 0;
 
             string insertStatement =
-                "INSERT INTO Invoices (CustomerId, ProductId, Quantity, TotalValue, TimeStamp) " +
-                "VALUES (@CustomerId, @ProductId, @Quantity, @TotalValue, @TimeStamp)";
+                "INSERT INTO Invoices (CustomerId, ProductId, ItemPrice, Quantity, Discount, Tax, SubTotal, TotalValue, TimeStamp) " +
+                "VALUES (@CustomerId, @ProductId, @ItemPrice, @Quantity, @Discount, @Tax, @SubTotal, @TotalValue, @TimeStamp)";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
             using SqlCommand command = new SqlCommand(insertStatement, connection);
             command.Parameters.AddWithValue("@CustomerId", invoice.CustomerId);
             command.Parameters.AddWithValue("@ProductId", invoice.ProductId);
+            command.Parameters.AddWithValue("@ItemPrice", invoice.ItemPrice);
             command.Parameters.AddWithValue("@Quantity", invoice.Quantity);
+            command.Parameters.AddWithValue("@Discount", invoice.Discount);
+            command.Parameters.AddWithValue("@Tax", invoice.Tax);
+            command.Parameters.AddWithValue("@SubTotal", invoice.SubTotal);
             command.Parameters.AddWithValue("@TotalValue", invoice.TotalValue);
             command.Parameters.AddWithValue("@TimeStamp", invoice.TimeStamp);
             connection.Open();

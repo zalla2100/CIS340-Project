@@ -9,10 +9,11 @@ namespace ShopEasy.Core
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
-        //TODO: add property for ItemPrice (double) here, db schema, and context. Product price may change after invoice.
+        public double ItemPrice { get; set; }
         public int Quantity { get; set; }
-        //TODO: add property for Discount (double) here, db schema, and context
-        //TODO: add property for Tax (double) here, db schema, and context
+        public double Discount { get; set; }
+        public double Tax { get; set; }
+        public double SubTotal { get; set; }
         public double TotalValue { get; set; }
         public DateTime TimeStamp { get; set; }
     }

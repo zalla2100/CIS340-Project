@@ -10,7 +10,7 @@ namespace ShopEasy.Core
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public string PhoneNumber { get; set; } //change db schema to be nvarchar(10)
+        public string PhoneNumber { get; set; }
         public bool IsVeteran { get; set; }
         public bool IsSenior { get; set; }
     }
