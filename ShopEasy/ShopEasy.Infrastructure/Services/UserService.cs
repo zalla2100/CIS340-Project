@@ -50,5 +50,10 @@ namespace ShopEasy.Infrastructure
         {
             return Guid.NewGuid().ToString()[..8];
         }
+
+        public static User GetUser(string username, string password)
+        {
+            return UserContext.GetUser(username, password);
+        }
     }
 }

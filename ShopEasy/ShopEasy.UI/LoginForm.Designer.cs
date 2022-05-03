@@ -62,6 +62,7 @@ namespace ShopEasy.UI
             this.usernameTxtBx.Name = "usernameTxtBx";
             this.usernameTxtBx.Size = new System.Drawing.Size(198, 27);
             this.usernameTxtBx.TabIndex = 2;
+            this.usernameTxtBx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.usernameTxtBx_KeyUp);
             // 
             // passwordLbl
             // 
@@ -80,6 +81,7 @@ namespace ShopEasy.UI
             this.passwordTxtBx.Size = new System.Drawing.Size(198, 27);
             this.passwordTxtBx.TabIndex = 4;
             this.passwordTxtBx.UseSystemPasswordChar = true;
+            this.passwordTxtBx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.passwordTxtBx_KeyUp);
             // 
             // loginBtn
             // 
@@ -89,6 +91,7 @@ namespace ShopEasy.UI
             this.loginBtn.TabIndex = 5;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // LoginForm
             // 
@@ -101,9 +104,9 @@ namespace ShopEasy.UI
             this.Controls.Add(this.usernameTxtBx);
             this.Controls.Add(this.usernameLbl);
             this.Controls.Add(this.shopEasyLbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

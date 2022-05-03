@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.usernameLbl = new System.Windows.Forms.Label();
+            this.usernameDisplayLbl = new System.Windows.Forms.Label();
             this.tableViewCmboBx = new System.Windows.Forms.ComboBox();
             this.viewCmboBxLbl = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // usernameLbl
+            // usernameDisplayLbl
             // 
-            this.usernameLbl.AutoSize = true;
-            this.usernameLbl.Location = new System.Drawing.Point(1157, 23);
-            this.usernameLbl.Name = "usernameLbl";
-            this.usernameLbl.Size = new System.Drawing.Size(73, 20);
-            this.usernameLbl.TabIndex = 0;
-            this.usernameLbl.Text = "username";
+            this.usernameDisplayLbl.AutoSize = true;
+            this.usernameDisplayLbl.Location = new System.Drawing.Point(1157, 23);
+            this.usernameDisplayLbl.Name = "usernameDisplayLbl";
+            this.usernameDisplayLbl.Size = new System.Drawing.Size(73, 20);
+            this.usernameDisplayLbl.TabIndex = 0;
+            this.usernameDisplayLbl.Text = "username";
             // 
             // tableViewCmboBx
             // 
@@ -87,7 +87,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.viewCmboBxLbl);
             this.Controls.Add(this.tableViewCmboBx);
-            this.Controls.Add(this.usernameLbl);
+            this.Controls.Add(this.usernameDisplayLbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "UserActionsForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -97,7 +99,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label usernameLbl;
+        private System.Windows.Forms.Label usernameDisplayLbl;
         private System.Windows.Forms.ComboBox tableViewCmboBx;
         private System.Windows.Forms.Label viewCmboBxLbl;
         private System.Windows.Forms.DataGridView dataGridView1;
