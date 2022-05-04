@@ -28,23 +28,30 @@ namespace ShopEasy.UI
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                user = UserService.GetUser(username, password);
-                if (user != null)
+                try
                 {
-                    UserActionsForm userActionsForm = new UserActionsForm();
-                    userActionsForm.Closed += (s, args) => this.Close();
-                    var usernameLabel = userActionsForm.Controls.Find("usernameDisplayLbl", true)[0];
-                    usernameLabel.Text = user.UserName;
-                    userActionsForm.Show();
+                    user = UserService.GetUser(username, password);
+                    if (user != null)
+                    {
+                        UserActionsForm userActionsForm = new UserActionsForm();
+                        userActionsForm.Closed += (s, args) => this.Close();
+                        var usernameLabel = userActionsForm.Controls.Find("usernameDisplayLbl", true)[0];
+                        usernameLabel.Text = user.UserName;
+                        userActionsForm.Show();
 
-                    usernameTxtBx.Clear();
-                    passwordTxtBx.Clear();
-                    this.Hide();
+                        usernameTxtBx.Clear();
+                        passwordTxtBx.Clear();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username or password is incorrect.");
+                        passwordTxtBx.Clear();
+                    }
                 }
-                else
+                catch
                 {
-                    MessageBox.Show("Username or password is incorrect.");
-                    passwordTxtBx.Clear();
+                    MessageBox.Show("An error has occured.");
                 }
             }
             else
@@ -67,8 +74,8 @@ namespace ShopEasy.UI
         {
             if (e.KeyCode == Keys.Enter)
             {
-                loginBtn.Focus();
                 loginBtn.PerformClick();
+                loginBtn.Focus();
             }
         } 
     }

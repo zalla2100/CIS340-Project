@@ -14,5 +14,12 @@ namespace ShopEasy.UI
         {
             InitializeComponent();
         }
+
+        private void tableViewCmboBx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = tableViewCmboBx.SelectedIndex;
+            var value = tableViewCmboBx.Items[index];
+            MessageBox.Show(value.ToString());
+        }
     }
 }

@@ -31,8 +31,8 @@
             this.usernameDisplayLbl = new System.Windows.Forms.Label();
             this.tableViewCmboBx = new System.Windows.Forms.ComboBox();
             this.viewCmboBxLbl = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // usernameDisplayLbl
@@ -48,7 +48,6 @@
             // 
             this.tableViewCmboBx.FormattingEnabled = true;
             this.tableViewCmboBx.Items.AddRange(new object[] {
-            "-select view-",
             "Products",
             "Invoices",
             "Customers"});
@@ -56,6 +55,7 @@
             this.tableViewCmboBx.Name = "tableViewCmboBx";
             this.tableViewCmboBx.Size = new System.Drawing.Size(151, 28);
             this.tableViewCmboBx.TabIndex = 2;
+            this.tableViewCmboBx.SelectedIndexChanged += new System.EventHandler(this.tableViewCmboBx_SelectedIndexChanged);
             // 
             // viewCmboBxLbl
             // 
@@ -66,32 +66,32 @@
             this.viewCmboBxLbl.TabIndex = 3;
             this.viewCmboBxLbl.Text = "View:";
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(246, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(1003, 407);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(246, 92);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.RowTemplate.Height = 29;
+            this.dataGridView.Size = new System.Drawing.Size(1003, 407);
+            this.dataGridView.TabIndex = 4;
             // 
             // UserActionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1298, 551);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.viewCmboBxLbl);
             this.Controls.Add(this.tableViewCmboBx);
             this.Controls.Add(this.usernameDisplayLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "UserActionsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,6 +102,6 @@
         private System.Windows.Forms.Label usernameDisplayLbl;
         private System.Windows.Forms.ComboBox tableViewCmboBx;
         private System.Windows.Forms.Label viewCmboBxLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
