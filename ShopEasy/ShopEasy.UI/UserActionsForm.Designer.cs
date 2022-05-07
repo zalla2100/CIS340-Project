@@ -32,6 +32,8 @@
             this.tableViewCmboBx = new System.Windows.Forms.ComboBox();
             this.viewCmboBxLbl = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.searchTxtBx = new System.Windows.Forms.TextBox();
+            this.searchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,11 +81,33 @@
             this.dataGridView.Size = new System.Drawing.Size(1078, 465);
             this.dataGridView.TabIndex = 4;
             // 
+            // searchTxtBx
+            // 
+            this.searchTxtBx.Enabled = false;
+            this.searchTxtBx.Location = new System.Drawing.Point(246, 37);
+            this.searchTxtBx.Name = "searchTxtBx";
+            this.searchTxtBx.Size = new System.Drawing.Size(311, 27);
+            this.searchTxtBx.TabIndex = 6;
+            this.searchTxtBx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchTxtBx_KeyUp);
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Enabled = false;
+            this.searchBtn.Location = new System.Drawing.Point(602, 37);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(94, 29);
+            this.searchBtn.TabIndex = 7;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+            // 
             // UserActionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 594);
+            this.Controls.Add(this.searchBtn);
+            this.Controls.Add(this.searchTxtBx);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.viewCmboBxLbl);
             this.Controls.Add(this.tableViewCmboBx);
@@ -101,5 +125,7 @@
         private System.Windows.Forms.ComboBox tableViewCmboBx;
         private System.Windows.Forms.Label viewCmboBxLbl;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.TextBox searchTxtBx;
+        private System.Windows.Forms.Button searchBtn;
     }
 }

@@ -62,20 +62,20 @@ namespace ShopEasy.UI
 
         private void usernameTxtBx_KeyUp(object sender, KeyEventArgs e)
         {
-            userActionsForm_KeyUp(e);
+            loginForm_KeyUp(e);
         }
 
         private void passwordTxtBx_KeyUp(object sender, KeyEventArgs e)
         {
-            userActionsForm_KeyUp(e);
+            loginForm_KeyUp(e);
         }
 
-        private void userActionsForm_KeyUp(KeyEventArgs e)
+        private void loginForm_KeyUp(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                loginBtn.PerformClick();
                 loginBtn.Focus();
+                loginBtn.PerformClick();
             }
         }
     }
