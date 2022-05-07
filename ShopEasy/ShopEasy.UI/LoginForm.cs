@@ -33,7 +33,7 @@ namespace ShopEasy.UI
                     user = UserService.GetUser(username, password);
                     if (user != null)
                     {
-                        UserActionsForm userActionsForm = new UserActionsForm();
+                        UserActionsForm userActionsForm = new UserActionsForm(user);
                         userActionsForm.Closed += (s, args) => this.Close();
                         var usernameLabel = userActionsForm.Controls.Find("usernameDisplayLbl", true)[0];
                         usernameLabel.Text = user.UserName;
@@ -77,6 +77,6 @@ namespace ShopEasy.UI
                 loginBtn.PerformClick();
                 loginBtn.Focus();
             }
-        } 
+        }
     }
 }

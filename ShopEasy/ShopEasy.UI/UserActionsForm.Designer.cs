@@ -48,10 +48,6 @@
             // tableViewCmboBx
             // 
             this.tableViewCmboBx.FormattingEnabled = true;
-            this.tableViewCmboBx.Items.AddRange(new object[] {
-            "Products",
-            "Invoices",
-            "Customers"});
             this.tableViewCmboBx.Location = new System.Drawing.Point(33, 92);
             this.tableViewCmboBx.Name = "tableViewCmboBx";
             this.tableViewCmboBx.Size = new System.Drawing.Size(151, 28);
