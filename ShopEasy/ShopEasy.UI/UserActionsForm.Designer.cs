@@ -37,6 +37,7 @@
             // 
             // usernameDisplayLbl
             // 
+            this.usernameDisplayLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.usernameDisplayLbl.AutoSize = true;
             this.usernameDisplayLbl.Location = new System.Drawing.Point(1157, 23);
             this.usernameDisplayLbl.Name = "usernameDisplayLbl";
@@ -70,26 +71,27 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(246, 92);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(1003, 407);
+            this.dataGridView.Size = new System.Drawing.Size(1078, 465);
             this.dataGridView.TabIndex = 4;
             // 
             // UserActionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 551);
+            this.ClientSize = new System.Drawing.Size(1346, 594);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.viewCmboBxLbl);
             this.Controls.Add(this.tableViewCmboBx);
             this.Controls.Add(this.usernameDisplayLbl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.Name = "UserActionsForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

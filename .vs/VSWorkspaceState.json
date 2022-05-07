@@ -5,7 +5,9 @@
     "\\ShopEasy\\ConsoleTest",
     "\\ShopEasy\\ShopEasy",
     "\\ShopEasy\\ShopEasy.Core",
-    "\\ShopEasy\\ShopEasy.Infrastructure"
+    "\\ShopEasy\\ShopEasy.Infrastructure",
+    "\\ShopEasy\\ShopEasy.UI"
   ],
+  "SelectedNode": "\\ShopEasy\\ShopEasy.sln",
   "PreviewInSolutionExplorer": false
 }
