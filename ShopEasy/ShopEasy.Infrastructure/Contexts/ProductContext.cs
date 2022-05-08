@@ -13,7 +13,7 @@ namespace ShopEasy.Infrastructure
         {
             Product product = null;
             string selectStatement =
-                "SELECT Id, Name, Price, CategoryId " +
+                "SELECT Id, Name, Price, Category, SubCategory " +
                 "FROM Products " +
                 "WHERE Id = @ProductId";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
@@ -30,47 +30,29 @@ namespace ShopEasy.Infrastructure
                     Id = (int)reader["Id"],
                     Name = reader["Name"].ToString(),
                     Price = (double)reader["Price"],
-                    CategoryId = (int)reader["CategoryId"]
+                    Category = reader["Category"].ToString(),
+                    SubCategory = reader["SubCategory"].ToString()
                 };
             }
             return product;
         }
 
-        public static Product GetProduct(string productName)
-        {
-            Product product = null;
-            string selectStatement =
-                "SELECT Id, Name, Price, CategoryId " +
-                "FROM Products " +
-                "WHERE Name = @ProductName";
-            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
-            using SqlCommand command = new SqlCommand(selectStatement, connection);
-            command.Parameters.AddWithValue("@ProductName", productName);
-            connection.Open();
-
-            using SqlDataReader reader = command.ExecuteReader(
-                CommandBehavior.SingleRow & CommandBehavior.CloseConnection);
-            if (reader.Read())
-            {
-                product = new Product
-                {
-                    Id = (int)reader["Id"],
-                    Name = reader["Name"].ToString(),
-                    Price = (double)reader["Price"],
-                    CategoryId = (int)reader["CategoryId"]
-                };
-            }
-            return product;
-        }
 
         //public static bool UpdateProduct()
         //{
 
         //}
 
-        //public static bool DeleteProduct()
-        //{
-
-        //}
+        public static bool DeleteProduct(int id)
+        {
+            string deleteStatement = "DELETE FROM Products WHERE Id = @id";
+            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
+            using SqlCommand command = new SqlCommand(deleteStatement, connection);
+            command.Parameters.AddWithValue("@id", id);
+            connection.Open();
+            int count = command.ExecuteNonQuery();
+            connection.Close();
+            return count == 1;
+        }
     }
 }

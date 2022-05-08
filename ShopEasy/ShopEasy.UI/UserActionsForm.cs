@@ -30,6 +30,17 @@ namespace ShopEasy.UI
 
         private void tableViewCmboBx_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var deleteColumnProduct = dataGridView.Columns["dataGridViewProductDeleteBtn"];
+            var deleteColumnCustomer = dataGridView.Columns["dataGridViewCustomerDeleteBtn"];
+            if (deleteColumnProduct != null)
+            {
+                dataGridView.Columns.Remove(deleteColumnProduct);
+            }
+            if (deleteColumnCustomer != null)
+            {
+                dataGridView.Columns.Remove(deleteColumnCustomer);
+            }
+
             searchTxtBx.Text = "";
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string) tableViewCmboBx.Items[index];
@@ -59,14 +70,19 @@ namespace ShopEasy.UI
                 selectStatement += "WHERE CustomerId = @customerId ";
                 parameters.Add(new KeyValuePair<string, string>("@customerId", user.Id.ToString()));
             }
-            else if (table == "Products")
-            {
-                selectStatement += "P, ProductCategories PC WHERE P.CategoryId = PC.Id";
-            }
 
             try
             {
                 dataGridView.DataSource = new BindingSource().DataSource = GetData(selectStatement, parameters);
+                if (isAdmin && (table == "Products" || table == "Customers"))
+                {
+                    var deleteButton = new DataGridViewButtonColumn();
+                    deleteButton.Name = table == "Products" ? "dataGridViewProductDeleteBtn" : "dataGridViewCustomerDeleteBtn";
+                    deleteButton.HeaderText = "Delete";
+                    deleteButton.Text = "Delete";
+                    deleteButton.UseColumnTextForButtonValue = true;
+                    this.dataGridView.Columns.Add(deleteButton);
+                }
             }
             catch
             {
@@ -104,11 +120,10 @@ namespace ShopEasy.UI
             else if (table == "Products")
             {
                 selectStatement = $"DECLARE @termVar AS VARCHAR(MAX)=@term {selectStatement} ";
-                selectStatement += "P, ProductCategories PC WHERE P.CategoryId = PC.Id " +
-                    "AND (P.Name LIKE @termVar " +
-                        "OR P.Price LIKE @term2 " +
-                        "OR PC.Category LIKE @termVar " +
-                        "OR PC.SubCategory LIKE @termVar) ";
+                selectStatement += "WHERE Name LIKE @termVar " +
+                    "OR Price LIKE @term2 " +
+                    "OR Category LIKE @termVar " +
+                    "OR SubCategory LIKE @termVar ";
                 parameters.Add(new KeyValuePair<string, string>("@term", $"%{term}%"));
                 parameters.Add(new KeyValuePair<string, string>("@term2", $"%{term}"));
             }
@@ -143,6 +158,45 @@ namespace ShopEasy.UI
             {
                 searchBtn.Focus();
                 searchBtn.PerformClick();
+            }
+        }
+
+        void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if click is on new row or header row
+            if (e.RowIndex == dataGridView.NewRowIndex || e.RowIndex < 0)
+            {
+                return;
+            }
+
+            //Check if click is on specific column 
+            var deleteColumnProduct = dataGridView.Columns["dataGridViewProductDeleteBtn"];
+            var deleteColumnCustomer = dataGridView.Columns["dataGridViewCustomerDeleteBtn"];
+            var id = dataGridView.Rows[e.RowIndex].Cells[0].Value;
+            
+            if (deleteColumnProduct != null && e.ColumnIndex == deleteColumnProduct.Index)
+            {
+                var name = dataGridView.Rows[e.RowIndex].Cells[1].Value;
+                var result = MessageBox.Show($"Are you sure you want to delete product \"{name}\"?\nThis will delete associated invoices as well.",
+                    "Confirm Product Deletion", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    var success = ProductService.DeleteProduct((int)id);
+                    if (success)
+                    {
+                        MessageBox.Show("Successsfully deleted product.");
+                        this.tableViewCmboBx_SelectedIndexChanged(null, null);//reload data view
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete product.");
+                    }
+                }
+
+            }
+            else if (deleteColumnCustomer != null && e.ColumnIndex == deleteColumnCustomer.Index)
+            {
+                MessageBox.Show($"Clicked on customer with id {id}");
             }
         }
     }
