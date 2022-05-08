@@ -16,7 +16,7 @@ namespace ShopEasy.Core
     public class ProductCategory
     {
         public int Id { get; set; }
-        public int ParentId { get; set; }
-        public string Name { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
     }
 }

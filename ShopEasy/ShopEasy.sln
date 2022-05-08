@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEasy.Core", "ShopEasy.Core\ShopEasy.Core.csproj", "{C8D7E0D1-913F-46D5-A59C-83407A9614C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.Core", "ShopEasy.Core\ShopEasy.Core.csproj", "{C8D7E0D1-913F-46D5-A59C-83407A9614C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEasy.Infrastructure", "ShopEasy.Infrastructure\ShopEasy.Infrastructure.csproj", "{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.Infrastructure", "ShopEasy.Infrastructure\ShopEasy.Infrastructure.csproj", "{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{362D3A5F-54BD-4E3C-A965-6F00415926AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.Test", "ShopEasy.Test\ShopEasy.Test.csproj", "{81F28278-DC42-418B-9C15-3FD1DEA1A280}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEasy.Test", "ShopEasy.Test\ShopEasy.Test.csproj", "{81F28278-DC42-418B-9C15-3FD1DEA1A280}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEasy.UI", "ShopEasy.UI\ShopEasy.UI.csproj", "{A80AC059-95FC-4259-A084-90A9AD61B7F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.UI", "ShopEasy.UI\ShopEasy.UI.csproj", "{A80AC059-95FC-4259-A084-90A9AD61B7F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{362D3A5F-54BD-4E3C-A965-6F00415926AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{362D3A5F-54BD-4E3C-A965-6F00415926AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{362D3A5F-54BD-4E3C-A965-6F00415926AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{362D3A5F-54BD-4E3C-A965-6F00415926AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Release|Any CPU.ActiveCfg = Release|Any CPU

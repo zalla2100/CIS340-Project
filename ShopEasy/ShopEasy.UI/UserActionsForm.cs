@@ -59,6 +59,10 @@ namespace ShopEasy.UI
                 selectStatement += "WHERE CustomerId = @customerId ";
                 parameters.Add(new KeyValuePair<string, string>("@customerId", user.Id.ToString()));
             }
+            else if (table == "Products")
+            {
+                selectStatement += "P, ProductCategories PC WHERE P.CategoryId = PC.Id";
+            }
 
             try
             {
@@ -99,9 +103,12 @@ namespace ShopEasy.UI
             }
             else if (table == "Products")
             {
-                //TODO: change product schema to display category & sub category names, then allow searching on them.
-                //Or join with product categories table and search those columns
-                selectStatement += "WHERE Name LIKE @term OR Price LIKE @term2 ";
+                selectStatement = $"DECLARE @termVar AS VARCHAR(MAX)=@term {selectStatement} ";
+                selectStatement += "P, ProductCategories PC WHERE P.CategoryId = PC.Id " +
+                    "AND (P.Name LIKE @termVar " +
+                        "OR P.Price LIKE @term2 " +
+                        "OR PC.Category LIKE @termVar " +
+                        "OR PC.SubCategory LIKE @termVar) ";
                 parameters.Add(new KeyValuePair<string, string>("@term", $"%{term}%"));
                 parameters.Add(new KeyValuePair<string, string>("@term2", $"%{term}"));
             }

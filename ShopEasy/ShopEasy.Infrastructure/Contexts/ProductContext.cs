@@ -13,7 +13,7 @@ namespace ShopEasy.Infrastructure
         {
             Product product = null;
             string selectStatement =
-                "SELECT Id, Name, Price, Category " +
+                "SELECT Id, Name, Price, CategoryId " +
                 "FROM Products " +
                 "WHERE Id = @ProductId";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
@@ -30,7 +30,7 @@ namespace ShopEasy.Infrastructure
                     Id = (int)reader["Id"],
                     Name = reader["Name"].ToString(),
                     Price = (double)reader["Price"],
-                    CategoryId = (int)reader["Category"]
+                    CategoryId = (int)reader["CategoryId"]
                 };
             }
             return product;
@@ -40,7 +40,7 @@ namespace ShopEasy.Infrastructure
         {
             Product product = null;
             string selectStatement =
-                "SELECT Id, Name, Price, Category " +
+                "SELECT Id, Name, Price, CategoryId " +
                 "FROM Products " +
                 "WHERE Name = @ProductName";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
@@ -57,7 +57,7 @@ namespace ShopEasy.Infrastructure
                     Id = (int)reader["Id"],
                     Name = reader["Name"].ToString(),
                     Price = (double)reader["Price"],
-                    CategoryId = (int)reader["Category"]
+                    CategoryId = (int)reader["CategoryId"]
                 };
             }
             return product;
