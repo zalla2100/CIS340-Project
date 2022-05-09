@@ -145,10 +145,17 @@ namespace ShopEasy.Infrastructure
             return numInserted == 1;
         }
 
-        //public static bool DeleteUser()
-        //{
-
-        //}
+        public static bool DeleteUser(int id)
+        {
+            string deleteStatement = "DELETE FROM Users WHERE Id = @id";
+            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
+            using SqlCommand command = new SqlCommand(deleteStatement, connection);
+            command.Parameters.AddWithValue("@id", id);
+            connection.Open();
+            int count = command.ExecuteNonQuery();
+            connection.Close();
+            return count == 1;
+        }
 
         public static int GetHighestId()
         {

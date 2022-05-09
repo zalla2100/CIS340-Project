@@ -26,5 +26,22 @@ namespace ShopEasy.Infrastructure
         {
             //validate fields
         }
+
+        public static bool DeleteCustomer(int customerId)
+        {
+            if (InvoiceService.DeleteInvoices(customerId, "CustomerId")) //checks if command executed w/o errors, though invoices may not have been deleted
+            {
+                try
+                {
+                    return CustomerContext.DeleteCustomer(customerId);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
     }
 }

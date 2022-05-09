@@ -55,5 +55,22 @@ namespace ShopEasy.Infrastructure
         {
             return UserContext.GetUser(username, password);
         }
+
+        public static bool DeleteUser(int id)
+        {
+            if (CustomerService.DeleteCustomer(id)) //checks if command executed w/o errors, though customer may not have been deleted
+            {
+                try
+                {
+                    return UserContext.DeleteUser(id);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
     }
 }

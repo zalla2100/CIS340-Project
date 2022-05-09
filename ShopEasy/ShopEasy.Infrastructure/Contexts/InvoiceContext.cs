@@ -77,12 +77,12 @@ namespace ShopEasy.Infrastructure
             return numInserted == 1;
         }
 
-        public static void DeleteInvoices(int productId)
+        public static void DeleteInvoices(int id, string column)
         {
-            var deleteStatement = "DELETE FROM Invoices WHERE ProductId = @id ";
+            var deleteStatement = $"DELETE FROM Invoices WHERE {column} = @id ";
             using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
             using SqlCommand command = new SqlCommand(deleteStatement, connection);
-            command.Parameters.AddWithValue("@id", productId);
+            command.Parameters.AddWithValue("@id", id);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();

@@ -6,11 +6,11 @@ namespace ShopEasy.Infrastructure
 {
     public static class InvoiceService
     {
-        public static bool DeleteInvoices(int productId)
+        public static bool DeleteInvoices(int id, string column)
         {
             try
             {
-                InvoiceContext.DeleteInvoices(productId);
+                InvoiceContext.DeleteInvoices(id, column);
                 return true;
             }
             catch

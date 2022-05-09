@@ -8,7 +8,7 @@ namespace ShopEasy.Infrastructure
     {
         public static bool DeleteProduct(int productId)
         {
-            if (InvoiceService.DeleteInvoices(productId)) //checks if command executed w/o errors, though invoices may not have been deleted
+            if (InvoiceService.DeleteInvoices(productId, "ProductId")) //checks if command executed w/o errors, though invoices may not have been deleted
             {
                 try
                 {

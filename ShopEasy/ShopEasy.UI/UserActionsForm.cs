@@ -196,7 +196,23 @@ namespace ShopEasy.UI
             }
             else if (deleteColumnCustomer != null && e.ColumnIndex == deleteColumnCustomer.Index)
             {
-                MessageBox.Show($"Clicked on customer with id {id}");
+                var fname = dataGridView.Rows[e.RowIndex].Cells[1].Value;
+                var lname = dataGridView.Rows[e.RowIndex].Cells[2].Value;
+                var result = MessageBox.Show($"Are you sure you want to delete customer \"{fname} {lname}\"?\nThis will delete associated invoices and user as well.",
+                    "Confirm Customer Deletion", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    var success = UserService.DeleteUser((int)id);
+                    if (success)
+                    {
+                        MessageBox.Show("Successsfully deleted customer.");
+                        this.tableViewCmboBx_SelectedIndexChanged(null, null);//reload data view
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete customer.");
+                    }
+                }
             }
         }
     }
