@@ -20,10 +20,6 @@ namespace ShopEasy.UI
 
         private bool isAdmin = false;
         private ShopEasyDBContext context;
-        //private BindingSource productsSource = new BindingSource();
-        //private BindingSource customersSource = new BindingSource();
-        //private BindingSource usersSource = new BindingSource();
-        //private BindingSource invoicesSource = new BindingSource();
         
         public UserActionsForm(Users user, ShopEasyDBContext context)
         {
@@ -32,13 +28,9 @@ namespace ShopEasy.UI
             InitializeComponent();
 
             context.Products.Load();
-            //productsSource.DataSource = context.Products.Local.ToBindingList();
             context.Customers.Load();
-            //customersSource.DataSource = context.Customers.Local.ToBindingList();
             context.Users.Load();
-            //usersSource.DataSource = context.Users.Local.ToBindingList();
             context.Invoices.Load();
-            //invoicesSource.DataSource = context.Invoices.Local.ToBindingList();
             
             dataGridView.AutoGenerateColumns = true;
             tableViewCmboBx.Items.AddRange(new object[] { Tables.PRODUCTS, Tables.INVOICES });
@@ -49,33 +41,77 @@ namespace ShopEasy.UI
             }
         }
 
+        private void removeExtraColumns()
+        {
+            var admin = dataGridView.Columns["Admin"];
+            if (admin != null)
+            {
+                dataGridView.Columns.Remove(admin);
+            }
+
+            var customers = dataGridView.Columns["Customers"];
+            if (customers != null)
+            {
+                dataGridView.Columns.Remove(customers);
+            }
+
+            var invoices = dataGridView.Columns["Invoices"];
+            if (invoices != null)
+            {
+                dataGridView.Columns.Remove(invoices);
+            }
+
+            var customer = dataGridView.Columns["Customer"];
+            if (customer != null)
+            {
+                dataGridView.Columns.Remove(customer);
+            }
+
+            var product = dataGridView.Columns["Product"];
+            if (product != null)
+            {
+                dataGridView.Columns.Remove(product);
+            }
+
+            var user = dataGridView.Columns["User"];
+            if (user != null)
+            {
+                dataGridView.Columns.Remove(user);
+            }
+
+            var idNavigation = dataGridView.Columns["IdNavigation"];
+            if (idNavigation != null)
+            {
+                dataGridView.Columns.Remove(idNavigation);
+            }
+        }
+
         private void loadData(string table)
         {
             switch (table)
             {
                 case Tables.PRODUCTS:
+                    context.Products.Load();
                     dataGridView.DataSource = context.Products.Local.ToBindingList();
-                    dataGridView.Columns.RemoveAt(5); //don't show extra column
                     break;
                 case Tables.CUSTOMERS:
+                    context.Customers.Load();
                     dataGridView.DataSource = context.Customers.Local.ToBindingList();
-                    dataGridView.Columns.RemoveAt(7);
-                    dataGridView.Columns.RemoveAt(7);
                     break;
                 case Tables.USERS:
+                    context.Users.Load();
                     dataGridView.DataSource = context.Users.Local.ToBindingList();
-                    dataGridView.Columns.RemoveAt(3);
-                    dataGridView.Columns.RemoveAt(3);
                     break;
                 case Tables.INVOICES:
+                    context.Invoices.Load();
                     dataGridView.DataSource = context.Invoices.Local.ToBindingList();
-                    dataGridView.Columns.RemoveAt(10);
-                    dataGridView.Columns.RemoveAt(10);
                     break;
             }
+
+            removeExtraColumns();
         }
 
-        private void tableViewCmboBx_SelectedIndexChanged(object sender, EventArgs e)
+        private void removeDeleteButtons()
         {
             var deleteColumnProduct = dataGridView.Columns[PRODUCT_DELETE_BTN_COLUMN];
             var deleteColumnCustomer = dataGridView.Columns[CONSUMER_DELETE_BTN_COLUMN];
@@ -88,6 +124,24 @@ namespace ShopEasy.UI
             {
                 dataGridView.Columns.Remove(deleteColumnCustomer);
             }
+        }
+
+        private void addDeleteButtons(string table)
+        {
+            if (isAdmin && (table == Tables.PRODUCTS || table == Tables.CUSTOMERS))
+            {
+                var deleteButton = new DataGridViewButtonColumn();
+                deleteButton.Name = table == Tables.PRODUCTS ? PRODUCT_DELETE_BTN_COLUMN : CONSUMER_DELETE_BTN_COLUMN;
+                deleteButton.HeaderText = "Delete";
+                deleteButton.Text = "Delete";
+                deleteButton.UseColumnTextForButtonValue = true;
+                dataGridView.Columns.Add(deleteButton);
+            }
+        }
+
+        private void tableViewCmboBx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            removeDeleteButtons();
 
             searchTxtBx.Text = "";
             int index = tableViewCmboBx.SelectedIndex;
@@ -107,16 +161,7 @@ namespace ShopEasy.UI
             try
             {
                 loadData(table);
-
-                if (isAdmin && (table == Tables.PRODUCTS || table == Tables.CUSTOMERS))
-                {
-                    var deleteButton = new DataGridViewButtonColumn();
-                    deleteButton.Name = table == Tables.PRODUCTS ? PRODUCT_DELETE_BTN_COLUMN : CONSUMER_DELETE_BTN_COLUMN;
-                    deleteButton.HeaderText = "Delete";
-                    deleteButton.Text = "Delete";
-                    deleteButton.UseColumnTextForButtonValue = true;
-                    dataGridView.Columns.Add(deleteButton);
-                }
+                addDeleteButtons(table);
             }
             catch
             {
@@ -135,6 +180,7 @@ namespace ShopEasy.UI
             {
                 //do no filtering, retrieve all rows
                 loadData(table);
+                return;
             }
             else if (table == Tables.PRODUCTS)
             {
@@ -157,7 +203,10 @@ namespace ShopEasy.UI
 
             try
             {
+                removeDeleteButtons();
                 dataGridView.DataSource = new BindingList<object>(query.ToList());
+                removeExtraColumns();
+                addDeleteButtons(table);
             }
             catch
             {
@@ -212,12 +261,10 @@ namespace ShopEasy.UI
                         context.Invoices.RemoveRange(context.Invoices.Where(i => i.ProductId == id));
                         context.Products.Remove(product);
                         context.SaveChanges();
-                        //MessageBox.Show("Successsfully deleted product.");
                     }
                     catch
                     {
                         MessageBox.Show("Failed to delete product.");
-
                     }
                 }
             }
@@ -239,7 +286,6 @@ namespace ShopEasy.UI
                         context.Customers.Remove(customer);
                         context.Users.RemoveRange(context.Users.Where(u => u.Id == id));
                         context.SaveChanges();
-                        //MessageBox.Show("Successsfully deleted customer.");
                     }
                     catch
                     {
