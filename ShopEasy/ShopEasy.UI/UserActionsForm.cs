@@ -15,39 +15,71 @@ namespace ShopEasy.UI
 {
     public partial class UserActionsForm : Form
     {
-        private bool isAdmin = false;
-        private ShopEasyDBContext context = new ShopEasyDBContext();
-        private BindingSource productsSource = new BindingSource();
-        private BindingSource customersSource = new BindingSource();
-        private BindingSource usersSource = new BindingSource();
-        private BindingSource invoicesSource = new BindingSource();
+        private const string PRODUCT_DELETE_BTN_COLUMN = "ProductDeleteBtn";
+        private const string CONSUMER_DELETE_BTN_COLUMN = "ConsumerDeleteBtn";
 
-        public UserActionsForm(User user)
+        private bool isAdmin = false;
+        private ShopEasyDBContext context;
+        //private BindingSource productsSource = new BindingSource();
+        //private BindingSource customersSource = new BindingSource();
+        //private BindingSource usersSource = new BindingSource();
+        //private BindingSource invoicesSource = new BindingSource();
+        
+        public UserActionsForm(Users user, ShopEasyDBContext context)
         {
+            this.context = context;
+
             InitializeComponent();
 
             context.Products.Load();
-            productsSource.DataSource = context.Products.Local.ToBindingList();
+            //productsSource.DataSource = context.Products.Local.ToBindingList();
             context.Customers.Load();
-            customersSource.DataSource = context.Customers.Local.ToBindingList();
+            //customersSource.DataSource = context.Customers.Local.ToBindingList();
             context.Users.Load();
-            usersSource.DataSource = context.Users.Local.ToBindingList();
+            //usersSource.DataSource = context.Users.Local.ToBindingList();
             context.Invoices.Load();
-            invoicesSource.DataSource = context.Invoices.Local.ToBindingList();
+            //invoicesSource.DataSource = context.Invoices.Local.ToBindingList();
             
             dataGridView.AutoGenerateColumns = true;
-            tableViewCmboBx.Items.AddRange(new object[] {"Products","Invoices"});
+            tableViewCmboBx.Items.AddRange(new object[] { Tables.PRODUCTS, Tables.INVOICES });
 
-            this.isAdmin = AdminService.IsAdmin(user.Id);
+            isAdmin = context.Admin.Find(user.Id) != null;
             if (isAdmin) {
-                tableViewCmboBx.Items.AddRange(new string[] { "Customers", "Users" });
+                tableViewCmboBx.Items.AddRange(new string[] { Tables.CUSTOMERS, Tables.USERS });
+            }
+        }
+
+        private void loadData(string table)
+        {
+            switch (table)
+            {
+                case Tables.PRODUCTS:
+                    dataGridView.DataSource = context.Products.Local.ToBindingList();
+                    dataGridView.Columns.RemoveAt(5); //don't show extra column
+                    break;
+                case Tables.CUSTOMERS:
+                    dataGridView.DataSource = context.Customers.Local.ToBindingList();
+                    dataGridView.Columns.RemoveAt(7);
+                    dataGridView.Columns.RemoveAt(7);
+                    break;
+                case Tables.USERS:
+                    dataGridView.DataSource = context.Users.Local.ToBindingList();
+                    dataGridView.Columns.RemoveAt(3);
+                    dataGridView.Columns.RemoveAt(3);
+                    break;
+                case Tables.INVOICES:
+                    dataGridView.DataSource = context.Invoices.Local.ToBindingList();
+                    dataGridView.Columns.RemoveAt(10);
+                    dataGridView.Columns.RemoveAt(10);
+                    break;
             }
         }
 
         private void tableViewCmboBx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var deleteColumnProduct = dataGridView.Columns["dataGridViewProductDeleteBtn"];
-            var deleteColumnCustomer = dataGridView.Columns["dataGridViewCustomerDeleteBtn"];
+            var deleteColumnProduct = dataGridView.Columns[PRODUCT_DELETE_BTN_COLUMN];
+            var deleteColumnCustomer = dataGridView.Columns[CONSUMER_DELETE_BTN_COLUMN];
+
             if (deleteColumnProduct != null)
             {
                 dataGridView.Columns.Remove(deleteColumnProduct);
@@ -60,67 +92,30 @@ namespace ShopEasy.UI
             searchTxtBx.Text = "";
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string) tableViewCmboBx.Items[index];
-            //string selectStatement = $"SELECT * FROM {table} ";
-            //List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
 
-            switch (table)
+            if(table == Tables.INVOICES)
             {
-                case "Products":
-                case "Customers":
-                case "Users":
-                {
-                    searchTxtBx.Enabled = true;
-                    searchBtn.Enabled = true;
-                    break;
-                }
-                default:
-                {
-                    searchTxtBx.Enabled = false;
-                    searchBtn.Enabled = false;
-                    break;
-                }
+                searchTxtBx.Enabled = false;
+                searchBtn.Enabled = false;
             }
-
-            //if(table == "Invoices" && !isAdmin)
-            //{
-            //    selectStatement += "WHERE CustomerId = @customerId ";
-            //    parameters.Add(new KeyValuePair<string, string>("@customerId", user.Id.ToString()));
-            //}
+            else
+            {
+                searchTxtBx.Enabled = true;
+                searchBtn.Enabled = true;
+            }
 
             try
             {
-                switch (table)
-                {
-                    case "Products":
-                        dataGridView.DataSource = productsSource;
-                        dataGridView.Columns.RemoveAt(5); //don't show extra column
-                        break;
-                    case "Customers":
-                        dataGridView.DataSource = customersSource;
-                        dataGridView.Columns.RemoveAt(7);
-                        dataGridView.Columns.RemoveAt(7);
-                        break;
-                    case "Users":
-                        dataGridView.DataSource = usersSource;
-                        dataGridView.Columns.RemoveAt(3);
-                        dataGridView.Columns.RemoveAt(3);
-                        break;
-                    case "Invoices":
-                        dataGridView.DataSource = invoicesSource;
-                        dataGridView.Columns.RemoveAt(10);
-                        dataGridView.Columns.RemoveAt(10);
-                        break;
-                }
-                
+                loadData(table);
 
-                if (isAdmin && (table == "Products" || table == "Customers"))
+                if (isAdmin && (table == Tables.PRODUCTS || table == Tables.CUSTOMERS))
                 {
                     var deleteButton = new DataGridViewButtonColumn();
-                    deleteButton.Name = table == "Products" ? "dataGridViewProductDeleteBtn" : "dataGridViewCustomerDeleteBtn";
+                    deleteButton.Name = table == Tables.PRODUCTS ? PRODUCT_DELETE_BTN_COLUMN : CONSUMER_DELETE_BTN_COLUMN;
                     deleteButton.HeaderText = "Delete";
                     deleteButton.Text = "Delete";
                     deleteButton.UseColumnTextForButtonValue = true;
-                    this.dataGridView.Columns.Add(deleteButton);
+                    dataGridView.Columns.Add(deleteButton);
                 }
             }
             catch
@@ -129,61 +124,40 @@ namespace ShopEasy.UI
             }
         }
 
-        private static DataTable GetData(string sqlCommand, List<KeyValuePair<string, string>> parameters)
-        {
-            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
-            using SqlCommand command = new SqlCommand(sqlCommand, connection);
-            foreach (var pair in parameters)
-            {
-                command.Parameters.AddWithValue(pair.Key, pair.Value);
-            }
-            using SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = command;
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            return table;
-        }
-
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            string term = searchTxtBx.Text.Trim();
+            string term = searchTxtBx.Text.Trim().ToLower();
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string)tableViewCmboBx.Items[index];
-            string selectStatement = $"SELECT * FROM {table} ";
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            IQueryable<object> query = new List<object>().AsQueryable();
 
             if (string.IsNullOrWhiteSpace(term))
             {
-                //do no filtering, retieve all rows
+                //do no filtering, retrieve all rows
+                loadData(table);
             }
-            else if (table == "Products")
+            else if (table == Tables.PRODUCTS)
             {
-                selectStatement = $"DECLARE @termVar AS VARCHAR(MAX)=@term {selectStatement} ";
-                selectStatement += "WHERE Name LIKE @termVar " +
-                    "OR Price LIKE @term2 " +
-                    "OR Category LIKE @termVar " +
-                    "OR SubCategory LIKE @termVar ";
-                parameters.Add(new KeyValuePair<string, string>("@term", $"%{term}%"));
-                parameters.Add(new KeyValuePair<string, string>("@term2", $"%{term}"));
+                query = context.Products.Where(p => p.Name.ToLower().Contains(term) ||
+                    p.Category.ToLower().Contains(term) ||
+                    p.SubCategory.ToLower().Contains(term) ||
+                    p.Price.ToString().StartsWith(term));
             }
-            else if (table == "Customers")
+            else if (table == Tables.CUSTOMERS)
             {
-                selectStatement = $"DECLARE @termVar AS VARCHAR(MAX)=@term {selectStatement} ";
-                selectStatement += "WHERE FirstName LIKE @termVar " +
-                    "OR LastName LIKE @termVar " +
-                    "OR EmailAddress LIKE @termVar " +
-                    "OR PhoneNumber LIKE @termVar ";
-                parameters.Add(new KeyValuePair<string, string>("@term", $"%{term}%"));
+                query = context.Customers.Where(c => c.FirstName.ToLower().Contains(term) ||
+                    c.LastName.ToLower().Contains(term) ||
+                    c.EmailAddress.ToLower().Contains(term) ||
+                    c.PhoneNumber.ToLower().Contains(term));
             }
-            else if (table == "Users")
+            else if (table == Tables.USERS)
             {
-                selectStatement += "WHERE UserName LIKE @term ";
-                parameters.Add(new KeyValuePair<string, string>("@term", $"%{term}%"));
+                query = context.Users.Where(u => u.UserName.ToLower().Contains(term));
             }
 
             try
             {
-                dataGridView.DataSource = new BindingSource().DataSource = GetData(selectStatement, parameters);
+                dataGridView.DataSource = new BindingList<object>(query.ToList());
             }
             catch
             {
@@ -200,7 +174,7 @@ namespace ShopEasy.UI
             }
         }
 
-        void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //if click is on new row or header row
             if (e.RowIndex == dataGridView.NewRowIndex || e.RowIndex < 0)
@@ -209,73 +183,69 @@ namespace ShopEasy.UI
             }
 
             //Check if click is on specific column 
-            var deleteColumnProduct = dataGridView.Columns["dataGridViewProductDeleteBtn"];
-            var deleteColumnCustomer = dataGridView.Columns["dataGridViewCustomerDeleteBtn"];
-            var id = dataGridView.Rows[e.RowIndex].Cells[0].Value;
+            var deleteColumnProduct = dataGridView.Columns[PRODUCT_DELETE_BTN_COLUMN];
+            var deleteColumnCustomer = dataGridView.Columns[CONSUMER_DELETE_BTN_COLUMN];
+            var index = dataGridView.Columns["Id"].Index;
+            var id = (int)dataGridView.Rows[e.RowIndex].Cells[index].Value;
             
             if (deleteColumnProduct != null && e.ColumnIndex == deleteColumnProduct.Index)
             {
-                var name = dataGridView.Rows[e.RowIndex].Cells[1].Value;
-                var result = MessageBox.Show($"Are you sure you want to delete product \"{name}\"?\nThis will delete associated invoices as well.",
-                    "Confirm Product Deletion", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    var success = ProductService.DeleteProduct((int)id);
-                    if (success)
-                    {
-                        MessageBox.Show("Successsfully deleted product.");
-                        var parameters = new List<KeyValuePair<string, int>> { new KeyValuePair<string, int>("@id", (int)id) };
-                        this.DeleteData("DELETE FROM Invoices WHERE ProductId = @id", parameters, "Invoices");
-                        this.DeleteData("DELETE FROM Products WHERE Id = @id", parameters, "Products");
-                        this.tableViewCmboBx_SelectedIndexChanged(null, null);//reload data view
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete product.");
-                    }
-                }
-
+                deleteProduct(id);
             }
             else if (deleteColumnCustomer != null && e.ColumnIndex == deleteColumnCustomer.Index)
             {
-                var fname = dataGridView.Rows[e.RowIndex].Cells[1].Value;
-                var lname = dataGridView.Rows[e.RowIndex].Cells[2].Value;
-                var result = MessageBox.Show($"Are you sure you want to delete customer \"{fname} {lname}\"?\nThis will delete associated invoices and user as well.",
-                    "Confirm Customer Deletion", MessageBoxButtons.YesNo);
+                deleteCustomer(id);
+            }
+        }
+
+        private void deleteProduct(int id)
+        {
+            var product = context.Products.Find(id);
+            if (product != null)
+            {
+                var result = MessageBox.Show($"Are you sure you want to delete product \"{product.Name}\"?\nThis will delete associated invoices as well.",
+                                    "Confirm Product Deletion", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    var success = UserService.DeleteUser((int)id);
-                    if (success)
+                    try
                     {
-                        MessageBox.Show("Successsfully deleted customer.");
-                        this.tableViewCmboBx_SelectedIndexChanged(null, null);//reload data view
+                        context.Invoices.RemoveRange(context.Invoices.Where(i => i.ProductId == id));
+                        context.Products.Remove(product);
+                        context.SaveChanges();
+                        //MessageBox.Show("Successsfully deleted product.");
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Failed to delete customer.");
+                        MessageBox.Show("Failed to delete product.");
+
                     }
                 }
             }
         }
 
-        private void DeleteData(string sqlCommand, List<KeyValuePair<string, int>> parameters, string table)
+        private void deleteCustomer(int id)
         {
-            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
-            using SqlCommand command = new SqlCommand(sqlCommand, connection);
-            foreach (var pair in parameters)
+            var customer = context.Customers.Find(id);
+            if (customer != null)
             {
-                command.Parameters.AddWithValue(pair.Key, pair.Value);
-            }
-            using SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.DeleteCommand = command;
+                var result = MessageBox.Show($"Are you sure you want to delete customer \"{customer.FirstName} {customer.LastName}\"?\nThis will delete associated invoices and user as well.",
+                "Confirm Customer Deletion", MessageBoxButtons.YesNo);
 
-            try
-            {
-                adapter.Update(GetData($"SELECT * FROM {table}", new List<KeyValuePair<string, string>>()));
-            }
-            catch
-            {
-                //should work in local db if worked in project db. 
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        context.Invoices.RemoveRange(context.Invoices.Where(i => i.CustomerId == id));
+                        context.Customers.Remove(customer);
+                        context.Users.RemoveRange(context.Users.Where(u => u.Id == id));
+                        context.SaveChanges();
+                        //MessageBox.Show("Successsfully deleted customer.");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Failed to delete customer.");
+                    }
+                }
             }
         }
     }

@@ -14,7 +14,8 @@ namespace ShopEasy.UI
 {
     public partial class LoginForm : Form
     {
-        User user = null;
+        private ShopEasyDBContext context = new ShopEasyDBContext();
+        private Users user = null;
 
         public LoginForm()
         {
@@ -30,15 +31,15 @@ namespace ShopEasy.UI
             {
                 try
                 {
-                    user = UserService.GetUser(username, password);
+                    user = context.Users.Where(u => u.UserName == username && u.Password == password).FirstOrDefault();
+
                     if (user != null)
                     {
-                        UserActionsForm userActionsForm = new UserActionsForm(user);
+                        UserActionsForm userActionsForm = new UserActionsForm(user, context);
                         userActionsForm.Closed += (s, args) => this.Close();
                         var usernameLabel = userActionsForm.Controls.Find("usernameDisplayLbl", true)[0];
                         usernameLabel.Text = user.UserName;
                         userActionsForm.Show();
-
                         usernameTxtBx.Clear();
                         passwordTxtBx.Clear();
                         this.Hide();
