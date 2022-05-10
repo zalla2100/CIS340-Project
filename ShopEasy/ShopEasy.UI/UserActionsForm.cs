@@ -13,6 +13,16 @@ using ShopEasy.Infrastructure;
 
 namespace ShopEasy.UI
 {
+    //TODO List: 
+    //Move product categories into DB table
+    //encryption
+    //add/update customer
+    //customer can shop, create invoices
+    //update user?
+    //better way to view invoices & details for customer/product
+    //comments
+    //remove ado.net stuff & old code
+
     public partial class UserActionsForm : Form
     {
         private const string PRODUCT_DELETE_BTN_COLUMN = "ProductDeleteBtn";
