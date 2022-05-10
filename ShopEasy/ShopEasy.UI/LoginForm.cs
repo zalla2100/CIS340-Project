@@ -35,7 +35,7 @@ namespace ShopEasy.UI
 
                     if (user != null)
                     {
-                        UserActionsForm userActionsForm = new UserActionsForm(user, context);
+                        UserActionsForm userActionsForm = new UserActionsForm(user, ref context);
                         userActionsForm.Closed += (s, args) => this.Close();
                         var usernameLabel = userActionsForm.Controls.Find("usernameDisplayLbl", true)[0];
                         usernameLabel.Text = user.UserName;
@@ -58,25 +58,6 @@ namespace ShopEasy.UI
             else
             {
                 MessageBox.Show("Username and password cannot be empty.");
-            }
-        }
-
-        private void usernameTxtBx_KeyUp(object sender, KeyEventArgs e)
-        {
-            loginForm_KeyUp(e);
-        }
-
-        private void passwordTxtBx_KeyUp(object sender, KeyEventArgs e)
-        {
-            loginForm_KeyUp(e);
-        }
-
-        private void loginForm_KeyUp(KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                loginBtn.Focus();
-                loginBtn.PerformClick();
             }
         }
     }

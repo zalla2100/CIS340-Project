@@ -34,6 +34,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.searchTxtBx = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,11 +103,23 @@
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
+            // addBtn
+            // 
+            this.addBtn.Enabled = false;
+            this.addBtn.Location = new System.Drawing.Point(33, 200);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(94, 29);
+            this.addBtn.TabIndex = 8;
+            this.addBtn.Text = "Add Item";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
             // UserActionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 594);
+            this.Controls.Add(this.addBtn);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchTxtBx);
             this.Controls.Add(this.dataGridView);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TextBox searchTxtBx;
         private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.Button addBtn;
     }
 }

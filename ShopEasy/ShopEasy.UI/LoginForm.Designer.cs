@@ -62,7 +62,6 @@ namespace ShopEasy.UI
             this.usernameTxtBx.Name = "usernameTxtBx";
             this.usernameTxtBx.Size = new System.Drawing.Size(198, 27);
             this.usernameTxtBx.TabIndex = 2;
-            this.usernameTxtBx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.usernameTxtBx_KeyUp);
             // 
             // passwordLbl
             // 
@@ -81,7 +80,6 @@ namespace ShopEasy.UI
             this.passwordTxtBx.Size = new System.Drawing.Size(198, 27);
             this.passwordTxtBx.TabIndex = 4;
             this.passwordTxtBx.UseSystemPasswordChar = true;
-            this.passwordTxtBx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.passwordTxtBx_KeyUp);
             // 
             // loginBtn
             // 
@@ -95,6 +93,7 @@ namespace ShopEasy.UI
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.loginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
