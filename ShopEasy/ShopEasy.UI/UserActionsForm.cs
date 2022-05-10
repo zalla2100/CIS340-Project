@@ -91,20 +91,16 @@ namespace ShopEasy.UI
             switch (table)
             {
                 case Tables.PRODUCTS:
-                    context.Products.Load();
-                    dataGridView.DataSource = context.Products.Local.ToBindingList();
+                    dataGridView.DataSource = context.Products.ToList();
                     break;
                 case Tables.CUSTOMERS:
-                    context.Customers.Load();
-                    dataGridView.DataSource = context.Customers.Local.ToBindingList();
+                    dataGridView.DataSource = context.Customers.ToList();
                     break;
                 case Tables.USERS:
-                    context.Users.Load();
-                    dataGridView.DataSource = context.Users.Local.ToBindingList();
+                    dataGridView.DataSource = context.Users.ToList();
                     break;
                 case Tables.INVOICES:
-                    context.Invoices.Load();
-                    dataGridView.DataSource = context.Invoices.Local.ToBindingList();
+                    dataGridView.DataSource = context.Invoices.ToList();
                     break;
             }
 
@@ -204,7 +200,7 @@ namespace ShopEasy.UI
             try
             {
                 removeDeleteButtons();
-                dataGridView.DataSource = new BindingList<object>(query.ToList());
+                dataGridView.DataSource = query.ToList();
                 removeExtraColumns();
                 addDeleteButtons(table);
             }
@@ -240,10 +236,12 @@ namespace ShopEasy.UI
             if (deleteColumnProduct != null && e.ColumnIndex == deleteColumnProduct.Index)
             {
                 deleteProduct(id);
+                loadData(Tables.PRODUCTS);
             }
             else if (deleteColumnCustomer != null && e.ColumnIndex == deleteColumnCustomer.Index)
             {
                 deleteCustomer(id);
+                loadData(Tables.CUSTOMERS);
             }
         }
 
