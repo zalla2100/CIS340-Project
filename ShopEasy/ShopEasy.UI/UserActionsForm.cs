@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using ShopEasy.Core;
 using ShopEasy.Infrastructure;
 
@@ -13,15 +15,29 @@ namespace ShopEasy.UI
 {
     public partial class UserActionsForm : Form
     {
-        private User user;
         private bool isAdmin = false;
+        private ShopEasyDBContext context = new ShopEasyDBContext();
+        private BindingSource productsSource = new BindingSource();
+        private BindingSource customersSource = new BindingSource();
+        private BindingSource usersSource = new BindingSource();
+        private BindingSource invoicesSource = new BindingSource();
 
         public UserActionsForm(User user)
         {
             InitializeComponent();
-            this.user = user;
+
+            context.Products.Load();
+            productsSource.DataSource = context.Products.Local.ToBindingList();
+            context.Customers.Load();
+            customersSource.DataSource = context.Customers.Local.ToBindingList();
+            context.Users.Load();
+            usersSource.DataSource = context.Users.Local.ToBindingList();
+            context.Invoices.Load();
+            invoicesSource.DataSource = context.Invoices.Local.ToBindingList();
+            
             dataGridView.AutoGenerateColumns = true;
             tableViewCmboBx.Items.AddRange(new object[] {"Products","Invoices"});
+
             this.isAdmin = AdminService.IsAdmin(user.Id);
             if (isAdmin) {
                 tableViewCmboBx.Items.AddRange(new string[] { "Customers", "Users" });
@@ -44,8 +60,8 @@ namespace ShopEasy.UI
             searchTxtBx.Text = "";
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string) tableViewCmboBx.Items[index];
-            string selectStatement = $"SELECT * FROM {table} ";
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            //string selectStatement = $"SELECT * FROM {table} ";
+            //List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
 
             switch (table)
             {
@@ -65,15 +81,38 @@ namespace ShopEasy.UI
                 }
             }
 
-            if(table == "Invoices" && !isAdmin)
-            {
-                selectStatement += "WHERE CustomerId = @customerId ";
-                parameters.Add(new KeyValuePair<string, string>("@customerId", user.Id.ToString()));
-            }
+            //if(table == "Invoices" && !isAdmin)
+            //{
+            //    selectStatement += "WHERE CustomerId = @customerId ";
+            //    parameters.Add(new KeyValuePair<string, string>("@customerId", user.Id.ToString()));
+            //}
 
             try
             {
-                dataGridView.DataSource = new BindingSource().DataSource = GetData(selectStatement, parameters);
+                switch (table)
+                {
+                    case "Products":
+                        dataGridView.DataSource = productsSource;
+                        dataGridView.Columns.RemoveAt(5); //don't show extra column
+                        break;
+                    case "Customers":
+                        dataGridView.DataSource = customersSource;
+                        dataGridView.Columns.RemoveAt(7);
+                        dataGridView.Columns.RemoveAt(7);
+                        break;
+                    case "Users":
+                        dataGridView.DataSource = usersSource;
+                        dataGridView.Columns.RemoveAt(3);
+                        dataGridView.Columns.RemoveAt(3);
+                        break;
+                    case "Invoices":
+                        dataGridView.DataSource = invoicesSource;
+                        dataGridView.Columns.RemoveAt(10);
+                        dataGridView.Columns.RemoveAt(10);
+                        break;
+                }
+                
+
                 if (isAdmin && (table == "Products" || table == "Customers"))
                 {
                     var deleteButton = new DataGridViewButtonColumn();
@@ -185,6 +224,9 @@ namespace ShopEasy.UI
                     if (success)
                     {
                         MessageBox.Show("Successsfully deleted product.");
+                        var parameters = new List<KeyValuePair<string, int>> { new KeyValuePair<string, int>("@id", (int)id) };
+                        this.DeleteData("DELETE FROM Invoices WHERE ProductId = @id", parameters, "Invoices");
+                        this.DeleteData("DELETE FROM Products WHERE Id = @id", parameters, "Products");
                         this.tableViewCmboBx_SelectedIndexChanged(null, null);//reload data view
                     }
                     else
@@ -213,6 +255,27 @@ namespace ShopEasy.UI
                         MessageBox.Show("Failed to delete customer.");
                     }
                 }
+            }
+        }
+
+        private void DeleteData(string sqlCommand, List<KeyValuePair<string, int>> parameters, string table)
+        {
+            using SqlConnection connection = new SqlConnection(Connection.ConnectionString);
+            using SqlCommand command = new SqlCommand(sqlCommand, connection);
+            foreach (var pair in parameters)
+            {
+                command.Parameters.AddWithValue(pair.Key, pair.Value);
+            }
+            using SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.DeleteCommand = command;
+
+            try
+            {
+                adapter.Update(GetData($"SELECT * FROM {table}", new List<KeyValuePair<string, string>>()));
+            }
+            catch
+            {
+                //should work in local db if worked in project db. 
             }
         }
     }
