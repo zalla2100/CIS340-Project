@@ -19,10 +19,11 @@ namespace ShopEasy.UI
 
         public AddUpdateProductForm(Products product, ref ShopEasyDBContext context)
         {
+            InitializeComponent();
+
             this.context = context;
             this.isAdd = product == null;
             this.product = product == null ? new Products() : product;
-            InitializeComponent();
 
             productCategoryList.Items.Clear();
             productCategoryList.Items.AddRange(ProductCategories.Categories.Select(x => x.Name).ToArray());
