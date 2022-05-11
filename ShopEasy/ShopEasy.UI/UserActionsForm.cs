@@ -22,6 +22,7 @@ namespace ShopEasy.UI
     //better way to view invoices & details for customer/product
     //comments
     //remove ado.net stuff & old code
+    //sign out
 
     public partial class UserActionsForm : Form
     {
@@ -35,9 +36,10 @@ namespace ShopEasy.UI
         
         public UserActionsForm(Users user, ref ShopEasyDBContext context)
         {
-            this.context = context;
-
             InitializeComponent();
+
+            this.context = context;
+            usernameDisplayLbl.Text = user.UserName;
 
             loadData();
             

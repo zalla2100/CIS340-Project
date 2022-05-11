@@ -127,6 +127,7 @@
             this.Controls.Add(this.tableViewCmboBx);
             this.Controls.Add(this.usernameDisplayLbl);
             this.Name = "UserActionsForm";
+            this.Text = "ShopEasy";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

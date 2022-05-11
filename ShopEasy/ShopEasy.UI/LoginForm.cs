@@ -37,8 +37,6 @@ namespace ShopEasy.UI
                     {
                         UserActionsForm userActionsForm = new UserActionsForm(user, ref context);
                         userActionsForm.Closed += (s, args) => this.Close();
-                        var usernameLabel = userActionsForm.Controls.Find("usernameDisplayLbl", true)[0];
-                        usernameLabel.Text = user.UserName;
                         userActionsForm.Show();
                         usernameTxtBx.Clear();
                         passwordTxtBx.Clear();
