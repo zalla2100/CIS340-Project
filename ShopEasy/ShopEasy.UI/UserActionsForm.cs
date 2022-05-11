@@ -313,7 +313,7 @@ namespace ShopEasy.UI
             if (product != null)
             {
                 var result = MessageBox.Show($"Are you sure you want to delete product \"{product.Name}\"?\nThis will delete associated invoices as well.",
-                                    "Confirm Product Deletion", MessageBoxButtons.YesNo);
+                    "Confirm Product Deletion", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     try
@@ -336,7 +336,7 @@ namespace ShopEasy.UI
             if (customer != null)
             {
                 var result = MessageBox.Show($"Are you sure you want to delete customer \"{customer.FirstName} {customer.LastName}\"?\nThis will delete associated invoices and user as well.",
-                "Confirm Customer Deletion", MessageBoxButtons.YesNo);
+                    "Confirm Customer Deletion", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
