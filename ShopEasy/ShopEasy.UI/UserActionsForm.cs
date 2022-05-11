@@ -296,14 +296,14 @@ namespace ShopEasy.UI
                 var product = context.Products.Find(id);
                 AddUpdateProductForm addUpdateProductForm = new AddUpdateProductForm(product, ref context);
                 addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateProductForm.Show();
+                addUpdateProductForm.ShowDialog();
             }
             else if (updateColumnCustomer != null && e.ColumnIndex == updateColumnCustomer.Index)
             {
                 var customer = context.Customers.Find(id);
                 AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(customer, ref context);
                 addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateCustomerForm.Show();
+                addUpdateCustomerForm.ShowDialog();
             }
         }
 
@@ -364,15 +364,14 @@ namespace ShopEasy.UI
             {
                 AddUpdateProductForm addUpdateProductForm = new AddUpdateProductForm(null, ref context);
                 addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateProductForm.Show();  
+                addUpdateProductForm.ShowDialog();  
             }
             else if (table == Tables.CUSTOMERS)
             {
                 AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(null, ref context);
                 addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateCustomerForm.Show();
+                addUpdateCustomerForm.ShowDialog();
             }
-
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)

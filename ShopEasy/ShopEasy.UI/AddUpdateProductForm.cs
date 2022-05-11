@@ -81,7 +81,7 @@ namespace ShopEasy.UI
                 MessageBox.Show("Product name cannot be empty.");
                 return;
             }
-            if (productNameTxtBx.Text.Length > 40)
+            if (productNameTxtBx.Text.Trim().Length > 40)
             {
                 MessageBox.Show("Product name cannot be greater than 40 characters.");
                 return;
@@ -97,7 +97,7 @@ namespace ShopEasy.UI
                 return;
             }
 
-            this.product.Name = productNameTxtBx.Text;
+            this.product.Name = productNameTxtBx.Text.Trim();
             this.product.Price = productPriceBx.Value;
             this.product.Category = (string)productCategoryList.Items[productCategoryList.SelectedIndex];
             this.product.SubCategory = productSubcategoryList.SelectedIndex > -1 ?
@@ -139,6 +139,11 @@ namespace ShopEasy.UI
             {
                 this.Close();
             }
+        }
+
+        private void AddUpdateProductForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

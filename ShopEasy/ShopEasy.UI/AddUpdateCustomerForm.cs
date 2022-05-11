@@ -65,23 +65,23 @@ namespace ShopEasy.UI
                 return;
             }
 
-            if (customerFirstnameTxtBx.Text.Length > 30)
+            if (customerFirstnameTxtBx.Text.Trim().Length > 30) //change field in db to be nvarchar(max)
             {
                 MessageBox.Show("First name cannot be greater than 30 characters.");
                 return;
             }
-            if (customerLastnameTxtBx.Text.Length > 30)
+            if (customerLastnameTxtBx.Text.Trim().Length > 30) //change field in db to be nvarchar(max)
             {
                 MessageBox.Show("Last name cannot be greater than 30 characters.");
                 return;
             }
-            if (customerEmailTxtBx.Text.Length > 50) //change db to be max
+            if (customerEmailTxtBx.Text.Trim().Length > 50) //change field in db to be nvarchar(max)
             {
                 MessageBox.Show("Email cannot be greater than 50 characters.");
                 return;
             }
 
-            Regex nameRegex = new Regex("/[a-zA-Z ]{1,30}/g");
+            Regex nameRegex = new Regex("^[a-zA-Z ]{1,30}$"); //change to be one or more after remove limit in db
             if (!nameRegex.IsMatch(customerFirstnameTxtBx.Text))
             {
                 MessageBox.Show("First name can only contain letters and spaces.");
@@ -92,35 +92,38 @@ namespace ShopEasy.UI
                 MessageBox.Show("Last name can only contain letters and spaces.");
                 return;
             }
-            if(!Regex.IsMatch(customerEmailTxtBx.Text, @"/^[^@\s]+@[^@\s]+\.[^@\s]+$/g"))
+            if(!Regex.IsMatch(customerEmailTxtBx.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 MessageBox.Show("Invalid email address.");
                 return;
             }
-            if (customerPhoneTxtBx.Text.Length != 10 || !Regex.IsMatch(customerPhoneTxtBx.Text, "/[0-9]{10}/g"))
+            if (!Regex.IsMatch(customerPhoneTxtBx.Text, "^[0-9]{10}$"))
             {
                 MessageBox.Show("Phone number must be 10 consecutive digits.");
                 return;
             }
 
-            Customers existingEmail = context.Customers.Where(c => c.EmailAddress == customer.EmailAddress).FirstOrDefault();
-            if(existingEmail != null)
+            if (isAdd)
             {
-                MessageBox.Show("Email is already in use!");
-                return;
+                Customers existingEmail = context.Customers.Where(c => c.EmailAddress.ToLower() == customerEmailTxtBx.Text.Trim().ToLower()).FirstOrDefault();
+                if (existingEmail != null)
+                {
+                    MessageBox.Show("Email is already in use!");
+                    return;
+                }
+
+                Customers existingPhone = context.Customers.Where(c => c.PhoneNumber == customerPhoneTxtBx.Text).FirstOrDefault();
+                if (existingPhone != null)
+                {
+                    MessageBox.Show("Phone number is already in use!");
+                    return;
+                }
             }
 
-            Customers existingPhone = context.Customers.Where(c => c.PhoneNumber == customer.PhoneNumber).FirstOrDefault();
-            if (existingPhone != null)
-            {
-                MessageBox.Show("Phone number is already in use!");
-                return;
-            }
-
-            customer.FirstName = customerFirstnameTxtBx.Text;
-            customer.LastName = customerLastnameTxtBx.Text;
-            customer.EmailAddress = customerEmailTxtBx.Text;
-            customer.PhoneNumber = customerPhoneTxtBx.Text;
+            customer.FirstName = capitalizeName(customerFirstnameTxtBx.Text.Trim());
+            customer.LastName = capitalizeName(customerLastnameTxtBx.Text.Trim());
+            customer.EmailAddress = customerEmailTxtBx.Text.Trim().ToLower();
+            customer.PhoneNumber = customerPhoneTxtBx.Text.Trim();
             customer.IsVeteran = veteranChkBx.Checked;
             customer.IsSenior = seniorChkBx.Checked;
 
@@ -128,24 +131,24 @@ namespace ShopEasy.UI
             {
                 try
                 {
-                    context.Customers.Add(customer);
-
-                    var newCustomer = context.Customers.Where(c => c.PhoneNumber == customer.PhoneNumber).First();
-
                     Users user = new Users();
-                    user.Id = newCustomer.Id;
-                    var username = $"{customer.FirstName[0]}{customer.LastName[..6]}";
+                    var usernameBase = $"{customer.FirstName.Replace(" ", "")}{customer.LastName[0]}";
+                    var username = usernameBase;
                     var counter = 2;
                     Users existingUser = context.Users.Where(u => u.UserName == username).FirstOrDefault();
                     while (existingUser != null)
                     {
-                        username = $"{customer.FirstName[0]}{customer.LastName[..6]}{counter}";
+                        username = $"{usernameBase}{counter}";
                         existingUser = context.Users.Where(u => u.UserName == username).FirstOrDefault();
                         counter++;
                     }
                     user.UserName = username;
                     user.Password = Guid.NewGuid().ToString()[..8];
                     context.Users.Add(user);
+                    context.SaveChanges();
+
+                    customer.Id = user.Id;
+                    context.Customers.Add(customer);
 
                     context.SaveChanges();
                     this.Close();
@@ -178,6 +181,19 @@ namespace ShopEasy.UI
             {
                 this.Close();
             }
+        }
+
+        private string capitalizeName(string name)
+        {
+            name = name.ToLower();
+            var parts = name.Split(' ');
+            for (int i = 0; i < parts.Length; i++)
+            {
+                var chars = parts[i].ToCharArray();
+                chars[0] = chars[0].ToString().ToUpper()[0];
+                parts[i] = string.Join("", chars);
+            }
+            return string.Join(" ", parts);
         }
     }
 }

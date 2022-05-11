@@ -7,8 +7,8 @@ namespace ShopEasy.Core.Logic
 {
     public static class Validator
     {
-        static readonly Regex PasswordRegex = new Regex("/[a-zA-Z0-9" + Regex.Escape("!@#$%^&*-?") + "]{8,24}/g");
-        static readonly Regex UsernameRegex = new Regex("/[a-zA-Z0-9]{6,16}/g");
+        static readonly Regex PasswordRegex = new Regex("[a-zA-Z0-9" + Regex.Escape("!@#$%^&*-?") + "]{8,24}");
+        static readonly Regex UsernameRegex = new Regex("[a-zA-Z0-9]{6,16}");
 
         public static bool ValidPassword(string password)
         {
