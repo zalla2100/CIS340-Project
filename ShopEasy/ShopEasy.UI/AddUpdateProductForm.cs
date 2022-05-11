@@ -24,6 +24,7 @@ namespace ShopEasy.UI
             this.product = product == null ? new Products() : product;
             InitializeComponent();
 
+            productCategoryList.Items.Clear();
             productCategoryList.Items.AddRange(ProductCategories.Categories.Select(x => x.Name).ToArray());
 
             if(!isAdd)
@@ -34,12 +35,17 @@ namespace ShopEasy.UI
                 productPriceBx.Value = product.Price;
                 productCategoryList.SelectedIndex = productCategoryList.Items.IndexOf(product.Category);
 
+                productSubcategoryList.Items.Clear();
                 var category = ProductCategories.Categories.Find(x => x.Name == product.Category);
                 if(category.SubCategories.Count > 0)
                 {
                     productSubcategoryList.Items.AddRange(category.SubCategories.ToArray());
-                    productSubcategoryList.SelectedIndex = category.SubCategories.IndexOf(product.Category);
+                    productSubcategoryList.SelectedIndex = category.SubCategories.IndexOf(product.SubCategory);
                     productSubcategoryList.Enabled = true;
+                }
+                else
+                {
+                    productSubcategoryList.Enabled = false;
                 }
             }
             else

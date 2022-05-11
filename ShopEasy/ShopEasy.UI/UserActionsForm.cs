@@ -39,10 +39,7 @@ namespace ShopEasy.UI
 
             InitializeComponent();
 
-            context.Products.Load();
-            context.Customers.Load();
-            context.Users.Load();
-            context.Invoices.Load();
+            loadData();
             
             dataGridView.AutoGenerateColumns = true;
             tableViewCmboBx.Items.AddRange(new object[] { Tables.PRODUCTS, Tables.INVOICES });
@@ -98,7 +95,7 @@ namespace ShopEasy.UI
             }
         }
 
-        private void loadData(string table)
+        private void populateDataGridView(string table)
         {
             switch (table)
             {
@@ -117,6 +114,14 @@ namespace ShopEasy.UI
             }
 
             removeExtraColumns();
+        }
+
+        private void loadData()
+        {
+            context.Products.Load();
+            context.Customers.Load();
+            context.Users.Load();
+            context.Invoices.Load();
         }
 
         private void removeButtons()
@@ -150,14 +155,14 @@ namespace ShopEasy.UI
             {
                 var updateButton = new DataGridViewButtonColumn();
                 updateButton.Name = table == Tables.PRODUCTS ? PRODUCT_UPDATE_BTN_COLUMN : CUSTOMER_UPDATE_BTN_COLUMN;
-                updateButton.HeaderText = "Update";
+                updateButton.HeaderText = "";
                 updateButton.Text = "Update";
                 updateButton.UseColumnTextForButtonValue = true;
                 dataGridView.Columns.Add(updateButton);
 
                 var deleteButton = new DataGridViewButtonColumn();
                 deleteButton.Name = table == Tables.PRODUCTS ? PRODUCT_DELETE_BTN_COLUMN : CUSTOMER_DELETE_BTN_COLUMN;
-                deleteButton.HeaderText = "Delete";
+                deleteButton.HeaderText = "";
                 deleteButton.Text = "Delete";
                 deleteButton.UseColumnTextForButtonValue = true;
                 dataGridView.Columns.Add(deleteButton);
@@ -195,7 +200,7 @@ namespace ShopEasy.UI
 
             try
             {
-                loadData(table);
+                populateDataGridView(table);
                 addButtons(table);
             }
             catch
@@ -214,7 +219,7 @@ namespace ShopEasy.UI
             if (string.IsNullOrWhiteSpace(term))
             {
                 //do no filtering, retrieve all rows
-                loadData(table);
+                populateDataGridView(table);
                 return;
             }
             else if (table == Tables.PRODUCTS)
@@ -277,12 +282,12 @@ namespace ShopEasy.UI
             if (deleteColumnProduct != null && e.ColumnIndex == deleteColumnProduct.Index)
             {
                 deleteProduct(id);
-                loadData(Tables.PRODUCTS);
+                populateDataGridView(Tables.PRODUCTS);
             }
             else if (deleteColumnCustomer != null && e.ColumnIndex == deleteColumnCustomer.Index)
             {
                 deleteCustomer(id);
-                loadData(Tables.CUSTOMERS);
+                populateDataGridView(Tables.CUSTOMERS);
             }
             else if (updateColumnProduct != null && e.ColumnIndex == updateColumnProduct.Index)
             {
@@ -363,7 +368,7 @@ namespace ShopEasy.UI
         {
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string)tableViewCmboBx.Items[index];
-            loadData(table);
+            populateDataGridView(table);
         }
     }
 }
