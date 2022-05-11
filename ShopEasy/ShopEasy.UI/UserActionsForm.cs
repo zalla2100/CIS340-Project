@@ -191,7 +191,7 @@ namespace ShopEasy.UI
                 searchBtn.Enabled = true;
             }
 
-            if(table == Tables.PRODUCTS)
+            if(table == Tables.PRODUCTS || table == Tables.CUSTOMERS)
             {
                 addBtn.Enabled = true;
             }
@@ -300,7 +300,10 @@ namespace ShopEasy.UI
             }
             else if (updateColumnCustomer != null && e.ColumnIndex == updateColumnCustomer.Index)
             {
-                MessageBox.Show($"Update consumer with id {id}");
+                var customer = context.Customers.Find(id);
+                AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(customer, ref context);
+                addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
+                addUpdateCustomerForm.Show();
             }
         }
 
@@ -363,7 +366,13 @@ namespace ShopEasy.UI
                 addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
                 addUpdateProductForm.Show();  
             }
-            
+            else if (table == Tables.CUSTOMERS)
+            {
+                AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(null, ref context);
+                addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
+                addUpdateCustomerForm.Show();
+            }
+
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
