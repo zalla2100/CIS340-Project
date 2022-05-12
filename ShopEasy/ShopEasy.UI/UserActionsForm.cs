@@ -18,11 +18,12 @@ namespace ShopEasy.UI
     //encryption
         //https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator.create?view=net-6.0
         //https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
-    //customer can shop, create invoices
+    //customer can shop, create invoices (veterans 10% off, seniors 5% off)
     //update user?
     //better way to view invoices & details for customer/product
     //comments
     //move validation code into validator.cs
+    //ensure DB has required data & categories
 
     public partial class UserActionsForm : Form
     {
