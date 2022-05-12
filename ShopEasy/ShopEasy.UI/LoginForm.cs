@@ -35,12 +35,12 @@ namespace ShopEasy.UI
 
                     if (user != null)
                     {
-                        UserActionsForm userActionsForm = new UserActionsForm(user, ref context);
-                        userActionsForm.Closed += (s, args) => this.Close();
-                        userActionsForm.Show();
                         usernameTxtBx.Clear();
                         passwordTxtBx.Clear();
                         this.Hide();
+
+                        UserActionsForm userActionsForm = new UserActionsForm(user, ref context);
+                        userActionsForm.Show();
                     }
                     else
                     {
@@ -57,6 +57,11 @@ namespace ShopEasy.UI
             {
                 MessageBox.Show("Username and password cannot be empty.");
             }
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

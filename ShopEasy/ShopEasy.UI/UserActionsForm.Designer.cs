@@ -35,6 +35,7 @@
             this.searchTxtBx = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
+            this.signOutBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             // 
             this.usernameDisplayLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.usernameDisplayLbl.AutoSize = true;
-            this.usernameDisplayLbl.Location = new System.Drawing.Point(1157, 23);
+            this.usernameDisplayLbl.Location = new System.Drawing.Point(1213, 23);
             this.usernameDisplayLbl.Name = "usernameDisplayLbl";
             this.usernameDisplayLbl.Size = new System.Drawing.Size(73, 20);
             this.usernameDisplayLbl.TabIndex = 0;
@@ -114,11 +115,22 @@
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
+            // signOutBtn
+            // 
+            this.signOutBtn.Location = new System.Drawing.Point(1213, 57);
+            this.signOutBtn.Name = "signOutBtn";
+            this.signOutBtn.Size = new System.Drawing.Size(95, 29);
+            this.signOutBtn.TabIndex = 9;
+            this.signOutBtn.Text = "Sign Out";
+            this.signOutBtn.UseVisualStyleBackColor = true;
+            this.signOutBtn.Click += new System.EventHandler(this.signOutBtn_Click);
+            // 
             // UserActionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 594);
+            this.Controls.Add(this.signOutBtn);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchTxtBx);
@@ -128,6 +140,7 @@
             this.Controls.Add(this.usernameDisplayLbl);
             this.Name = "UserActionsForm";
             this.Text = "ShopEasy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserActionsForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -143,5 +156,6 @@
         private System.Windows.Forms.TextBox searchTxtBx;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.Button signOutBtn;
     }
 }

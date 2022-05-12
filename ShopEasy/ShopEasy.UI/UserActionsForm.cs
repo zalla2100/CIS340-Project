@@ -16,12 +16,13 @@ namespace ShopEasy.UI
     //TODO List: 
     //Move product categories into DB table
     //encryption
+        //https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator.create?view=net-6.0
+        //https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
     //customer can shop, create invoices
     //update user?
     //better way to view invoices & details for customer/product
     //comments
     //move validation code into validator.cs
-    //sign out
 
     public partial class UserActionsForm : Form
     {
@@ -378,6 +379,17 @@ namespace ShopEasy.UI
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string)tableViewCmboBx.Items[index];
             populateDataGridView(table);
+        }
+
+        private void signOutBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new LoginForm().Show();
+        }
+
+        private void UserActionsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
