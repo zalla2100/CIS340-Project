@@ -1,4 +1,5 @@
 ﻿using ShopEasy.Core;
+using ShopEasy.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

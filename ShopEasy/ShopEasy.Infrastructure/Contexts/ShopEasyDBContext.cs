@@ -2,8 +2,9 @@
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ShopEasy.Core;
 
-namespace ShopEasy.UI
+namespace ShopEasy.Infrastructure
 {
     public partial class ShopEasyDBContext : DbContext
     {

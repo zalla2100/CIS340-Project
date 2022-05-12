@@ -16,12 +16,11 @@ namespace ShopEasy.UI
     //TODO List: 
     //Move product categories into DB table
     //encryption
-    //add/update customer
     //customer can shop, create invoices
     //update user?
     //better way to view invoices & details for customer/product
     //comments
-    //remove ado.net stuff & old code
+    //move validation code into validator.cs
     //sign out
 
     public partial class UserActionsForm : Form

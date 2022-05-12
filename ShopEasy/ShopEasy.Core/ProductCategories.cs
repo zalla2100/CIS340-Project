@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ShopEasy.Core
 {
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
-    }
-
     public static class ProductCategories
     {
         public class ProductCategory
@@ -22,7 +12,7 @@ namespace ShopEasy.Core
             public List<string> SubCategories { get; set; } = new List<string>();
         }
 
-        //Normally this would be in DB but CRUD functionality doesn't exist on categories for this application.
+        //move into a DB table
         public static readonly List<ProductCategory> Categories = new List<ProductCategory>
         {
             new ProductCategory
@@ -41,7 +31,7 @@ namespace ShopEasy.Core
             {
                 Name = "Electronics"
             },
-            new ProductCategory 
+            new ProductCategory
             {
                 Name = "Clothing",
                 SubCategories = new List<string>
