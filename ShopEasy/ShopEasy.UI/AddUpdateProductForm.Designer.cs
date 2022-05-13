@@ -159,7 +159,6 @@
             this.MinimizeBox = false;
             this.Name = "AddUpdateProductForm";
             this.Text = "AddUpdateProductForm";
-            this.Load += new System.EventHandler(this.AddUpdateProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productPriceBx)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

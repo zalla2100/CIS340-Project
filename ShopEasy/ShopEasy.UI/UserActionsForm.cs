@@ -19,7 +19,6 @@ namespace ShopEasy.UI
         //https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator.create?view=net-6.0
         //https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
     //customer can shop, create invoices (veterans 10% off, seniors 5% off)
-    //update user?
     //better way to view invoices & details for customer/product
     //comments
     //move validation code into validator.cs
@@ -31,9 +30,11 @@ namespace ShopEasy.UI
         private const string CUSTOMER_DELETE_BTN_COLUMN = "CustomerDeleteBtn";
         private const string PRODUCT_UPDATE_BTN_COLUMN = "ProductUpdateBtn";
         private const string CUSTOMER_UPDATE_BTN_COLUMN = "CustomerUpdateBtn";
+        private const string USER_UPDATE_BTN_COLUMN = "UserUpdateBtn";
 
         private bool isAdmin = false;
         private ShopEasyDBContext context;
+        private Users currentUser;
         
         public UserActionsForm(Users user, ref ShopEasyDBContext context)
         {
@@ -41,6 +42,7 @@ namespace ShopEasy.UI
 
             this.context = context;
             usernameDisplayLbl.Text = user.UserName;
+            this.currentUser = user;
 
             loadData();
             
@@ -50,6 +52,7 @@ namespace ShopEasy.UI
             isAdmin = context.Admin.Find(user.Id) != null;
             if (isAdmin) {
                 tableViewCmboBx.Items.AddRange(new string[] { Tables.CUSTOMERS, Tables.USERS });
+                addBtn.Visible = true;
             }
         }
 
@@ -112,7 +115,9 @@ namespace ShopEasy.UI
                     dataGridView.DataSource = context.Users.ToList();
                     break;
                 case Tables.INVOICES:
-                    dataGridView.DataSource = context.Invoices.ToList();
+                    dataGridView.DataSource = isAdmin ? 
+                        context.Invoices.ToList() : 
+                        context.Invoices.Where(i => i.CustomerId == currentUser.Id).ToList();
                     break;
             }
 
@@ -133,6 +138,7 @@ namespace ShopEasy.UI
             var deleteColumnCustomer = dataGridView.Columns[CUSTOMER_DELETE_BTN_COLUMN];
             var updateColumnProduct = dataGridView.Columns[PRODUCT_UPDATE_BTN_COLUMN];
             var updateColumnCustomer = dataGridView.Columns[CUSTOMER_UPDATE_BTN_COLUMN];
+            var updateColumnUser = dataGridView.Columns[USER_UPDATE_BTN_COLUMN];
 
             if (deleteColumnProduct != null)
             {
@@ -149,6 +155,10 @@ namespace ShopEasy.UI
             if (updateColumnCustomer != null)
             {
                 dataGridView.Columns.Remove(updateColumnCustomer);
+            }
+            if (updateColumnUser != null)
+            {
+                dataGridView.Columns.Remove(updateColumnUser);
             }
         }
 
@@ -170,6 +180,15 @@ namespace ShopEasy.UI
                 deleteButton.UseColumnTextForButtonValue = true;
                 dataGridView.Columns.Add(deleteButton);
 
+            }
+            else if (isAdmin && table == Tables.USERS)
+            {
+                var updateButton = new DataGridViewButtonColumn();
+                updateButton.Name = USER_UPDATE_BTN_COLUMN;
+                updateButton.HeaderText = "";
+                updateButton.Text = "Update";
+                updateButton.UseColumnTextForButtonValue = true;
+                dataGridView.Columns.Add(updateButton);
             }
         }
 
@@ -279,6 +298,7 @@ namespace ShopEasy.UI
             var deleteColumnCustomer = dataGridView.Columns[CUSTOMER_DELETE_BTN_COLUMN];
             var updateColumnProduct = dataGridView.Columns[PRODUCT_UPDATE_BTN_COLUMN];
             var updateColumnCustomer = dataGridView.Columns[CUSTOMER_UPDATE_BTN_COLUMN];
+            var updateColumnUser = dataGridView.Columns[USER_UPDATE_BTN_COLUMN];
             var index = dataGridView.Columns["Id"].Index;
             var id = (int)dataGridView.Rows[e.RowIndex].Cells[index].Value;
             
@@ -297,14 +317,24 @@ namespace ShopEasy.UI
                 var product = context.Products.Find(id);
                 AddUpdateProductForm addUpdateProductForm = new AddUpdateProductForm(product, ref context);
                 addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateProductForm.ShowDialog();
+                addUpdateProductForm.Show();
+                this.Enabled = false;
             }
             else if (updateColumnCustomer != null && e.ColumnIndex == updateColumnCustomer.Index)
             {
                 var customer = context.Customers.Find(id);
                 AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(customer, ref context);
                 addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateCustomerForm.ShowDialog();
+                addUpdateCustomerForm.Show();
+                this.Enabled = false;
+            }
+            else if (updateColumnUser != null && e.ColumnIndex == updateColumnUser.Index)
+            {
+                var user = context.Users.Find(id);
+                UpdateUserForm updateUserForm = new UpdateUserForm(user, ref context);
+                updateUserForm.FormClosed += new FormClosedEventHandler(Form_Closed);
+                updateUserForm.Show();
+                this.Enabled = false;
             }
         }
 
@@ -365,13 +395,15 @@ namespace ShopEasy.UI
             {
                 AddUpdateProductForm addUpdateProductForm = new AddUpdateProductForm(null, ref context);
                 addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateProductForm.ShowDialog();  
+                addUpdateProductForm.Show();
+                this.Enabled = false;
             }
             else if (table == Tables.CUSTOMERS)
             {
                 AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(null, ref context);
                 addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateCustomerForm.ShowDialog();
+                addUpdateCustomerForm.Show();
+                this.Enabled = false;
             }
         }
 
@@ -380,6 +412,7 @@ namespace ShopEasy.UI
             int index = tableViewCmboBx.SelectedIndex;
             string table = (string)tableViewCmboBx.Items[index];
             populateDataGridView(table);
+            this.Enabled = true;
         }
 
         private void signOutBtn_Click(object sender, EventArgs e)

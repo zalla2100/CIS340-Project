@@ -141,10 +141,5 @@ namespace ShopEasy.UI
                 this.Close();
             }
         }
-
-        private void AddUpdateProductForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

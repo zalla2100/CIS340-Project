@@ -113,6 +113,7 @@
             this.addBtn.TabIndex = 8;
             this.addBtn.Text = "Add Item";
             this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Visible = false;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // signOutBtn
