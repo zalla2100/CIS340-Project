@@ -14,7 +14,6 @@ using ShopEasy.Infrastructure;
 namespace ShopEasy.UI
 {
     //TODO List: 
-    //Move product categories into DB table
     //encryption
         //https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator.create?view=net-6.0
         //https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
