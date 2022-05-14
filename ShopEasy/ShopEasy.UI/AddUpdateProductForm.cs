@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using static ShopEasy.Core.ProductCategories;
 
 namespace ShopEasy.UI
 {
@@ -27,7 +26,7 @@ namespace ShopEasy.UI
             this.product = product == null ? new Products() : product;
 
             productCategoryList.Items.Clear();
-            productCategoryList.Items.AddRange(ProductCategories.Categories.Select(x => x.Name).ToArray());
+            productCategoryList.Items.AddRange(context.ProductCategories.Where(x => x.ParentId == null).Select(x => x.Name).ToArray());
 
             if(!isAdd)
             {
@@ -38,11 +37,12 @@ namespace ShopEasy.UI
                 productCategoryList.SelectedIndex = productCategoryList.Items.IndexOf(product.Category);
 
                 productSubcategoryList.Items.Clear();
-                var category = ProductCategories.Categories.Find(x => x.Name == product.Category);
-                if(category.SubCategories.Count > 0)
+                var categoryId = context.ProductCategories.FirstOrDefault(x => x.ParentId == null && x.Name == product.Category).Id;
+                var subCategories = context.ProductCategories.Where(x => x.ParentId == categoryId).Select(x => x.Name); 
+                if(subCategories.Count() > 0)
                 {
-                    productSubcategoryList.Items.AddRange(category.SubCategories.ToArray());
-                    productSubcategoryList.SelectedIndex = category.SubCategories.IndexOf(product.SubCategory);
+                    productSubcategoryList.Items.AddRange(subCategories.ToArray());
+                    productSubcategoryList.SelectedIndex = Array.IndexOf(subCategories.ToArray(),product.SubCategory);
                     productSubcategoryList.Enabled = true;
                 }
                 else
@@ -59,14 +59,15 @@ namespace ShopEasy.UI
 
         private void productCategoryList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string categoryName = (string)productCategoryList.SelectedItem;
-            ProductCategory category = ProductCategories.Categories.Find(x => x.Name == categoryName);
-            productSubcategoryList.SelectedIndex = -1;
             productSubcategoryList.Items.Clear();
+            productSubcategoryList.SelectedIndex = -1;
 
-            if (category.SubCategories.Count > 0)
+            string categoryName = (string)productCategoryList.SelectedItem;
+            var categoryId = context.ProductCategories.FirstOrDefault(x => x.ParentId == null && x.Name == categoryName).Id;
+            var subCategories = context.ProductCategories.Where(x => x.ParentId == categoryId).Select(x => x.Name);
+            if (subCategories.Count() > 0)
             {
-                productSubcategoryList.Items.AddRange(category.SubCategories.ToArray());
+                productSubcategoryList.Items.AddRange(subCategories.ToArray());
                 productSubcategoryList.Enabled = true;
             }
             else

@@ -20,6 +20,7 @@ namespace ShopEasy.Infrastructure
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Invoices> Invoices { get; set; }
+        public virtual DbSet<ProductCategories> ProductCategories { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -81,6 +82,18 @@ namespace ShopEasy.Infrastructure
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Invoices__Produc__1C873BEC");
+            });
+
+            modelBuilder.Entity<ProductCategories>(entity =>
+            {
+                entity.HasIndex(e => new { e.Name, e.ParentId })
+                    .HasName("UQ__ProductC__9E4611E032BFB900")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Parent)
+                    .WithMany(p => p.InverseParent)
+                    .HasForeignKey(d => d.ParentId)
+                    .HasConstraintName("FK__ProductCa__Paren__351DDF8C");
             });
 
             modelBuilder.Entity<Products>(entity =>
