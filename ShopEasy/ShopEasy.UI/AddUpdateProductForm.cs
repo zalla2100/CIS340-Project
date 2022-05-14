@@ -77,24 +77,12 @@ namespace ShopEasy.UI
 
         private void productAddUpdateBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(productNameTxtBx.Text))
+            string errors = Validator.ValidProduct(productNameTxtBx.Text.Trim(), productCategoryList.SelectedIndex,
+                productSubcategoryList.Enabled, productSubcategoryList.SelectedIndex);
+
+            if (errors != string.Empty)
             {
-                MessageBox.Show("Product name cannot be empty.");
-                return;
-            }
-            if (productNameTxtBx.Text.Trim().Length > 40)
-            {
-                MessageBox.Show("Product name cannot be greater than 40 characters.");
-                return;
-            }
-            if (productCategoryList.SelectedIndex == -1)
-            {
-                MessageBox.Show("Category is required.");
-                return;
-            }
-            if (productSubcategoryList.Enabled && productSubcategoryList.SelectedIndex == -1)
-            {
-                MessageBox.Show("Subcategory is required.");
+                MessageBox.Show(errors);
                 return;
             }
 

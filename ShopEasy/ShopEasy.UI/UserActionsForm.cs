@@ -21,8 +21,8 @@ namespace ShopEasy.UI
     //customer can shop, create invoices (veterans 10% off, seniors 5% off)
     //better way to view invoices & details for customer/product
     //comments
-    //move validation code into validator.cs
     //ensure DB has required data & categories
+    //unit tests?
 
     public partial class UserActionsForm : Form
     {

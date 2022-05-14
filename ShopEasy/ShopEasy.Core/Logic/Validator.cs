@@ -12,48 +12,48 @@ namespace ShopEasy.Core
 
         public static string ValidPassword(string password)
         {
-            string error = string.Empty;
+            StringBuilder builder = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                error = "Password cannot be empty.\n";
+                builder.AppendLine("Password cannot be empty.");
             }
             else
             {
                 if (!ValidUserCredential(password, PasswordRegex))
                 {
-                    error += "Password can only contain letters, numbers, spaces, and the following special characters: !@#$%^&*-?\n";
+                    builder.AppendLine("Password can only contain letters, numbers, spaces, and the following special characters: !@#$%^&*-?");
                 }
                 if (password.Length < 8 || password.Length > 24)
                 {
-                    error += "Password must be between 8 and 24 characters.\n";
+                    builder.AppendLine("Password must be between 8 and 24 characters.");
                 }
             }
 
-            return error;
+            return builder.ToString();
         }
 
         public static string ValidUsername(string username)
         {
-            string error = string.Empty;
+            StringBuilder builder = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                error = "Username cannot be empty.\n";
+                builder.AppendLine("Username cannot be empty.");
             }
             else
             {
                 if (!ValidUserCredential(username, UsernameRegex))
                 {
-                    error += "Username can only contain letters and numbers.\n";
+                    builder.AppendLine("Username can only contain letters and numbers.");
                 }
                 if (username.Length < 6 || username.Length > 16)
                 {
-                    error += "Username must be between 6 and 16 characters.\n";
+                    builder.AppendLine("Username must be between 6 and 16 characters.");
                 }
             }
 
-            return error;
+            return builder.ToString();
         }
 
         private static bool ValidUserCredential(string value, Regex regex)
@@ -71,6 +71,88 @@ namespace ShopEasy.Core
             }
 
             return false;
+        }
+
+        public static string ValidProduct(string name, int categoryIndex, bool subCategoryEnabled, int subCategoryIndex)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                builder.AppendLine("Product name cannot be empty.");
+            }
+            else if (name.Length > 40)
+            {
+                builder.AppendLine("Product name cannot be greater than 40 characters.");
+            }
+
+            if (categoryIndex == -1)
+            {
+                builder.AppendLine("Category is required.");
+            }
+            if (subCategoryEnabled && subCategoryIndex == -1)
+            {
+                builder.AppendLine("Subcategory is required.");
+            }
+
+            return builder.ToString();
+        }
+
+        public static string ValidCustomer(string firstname, string lastname, string email, string phone)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(firstname))
+            {
+                builder.AppendLine("First name cannot be empty.");
+            }
+            else if (firstname.Length > 30)
+            {
+                builder.AppendLine("First name cannot be greater than 30 characters.");
+            }
+
+            if (string.IsNullOrWhiteSpace(lastname))
+            {
+                builder.AppendLine("Last name cannot be empty.");
+            }
+            else if (lastname.Length > 30) 
+            {
+                builder.AppendLine("Last name cannot be greater than 30 characters.");
+            }
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                builder.AppendLine("Email cannot be empty.");
+            }
+            else if (email.Length > 50)
+            {
+                builder.AppendLine("Email cannot be greater than 50 characters.");
+            }
+
+            if (string.IsNullOrWhiteSpace(phone))
+            {
+                builder.AppendLine("Phone number cannot be empty.");
+            }
+
+            Regex nameRegex = new Regex("^[a-zA-Z ]{1,30}$");
+            if (!nameRegex.IsMatch(firstname))
+            {
+                builder.AppendLine("First name can only contain letters and spaces.");
+            }
+            if (!nameRegex.IsMatch(lastname))
+            {
+                builder.AppendLine("Last name can only contain letters and spaces.");
+            }
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                builder.AppendLine("Invalid email address.");
+            }
+            if (!Regex.IsMatch(phone, "^[0-9]{10}$"))
+            {
+                builder.AppendLine("Phone number must be 10 consecutive digits.");
+            }
+
+            return builder.ToString();
         }
     }
 }

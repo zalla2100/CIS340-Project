@@ -46,62 +46,12 @@ namespace ShopEasy.UI
 
         private void customerAddUpdateBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(customerFirstnameTxtBx.Text))
-            {
-                MessageBox.Show("First name cannot be empty.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(customerLastnameTxtBx.Text))
-            {
-                MessageBox.Show("Last name cannot be empty.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(customerEmailTxtBx.Text))
-            {
-                MessageBox.Show("Email cannot be empty.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(customerPhoneTxtBx.Text))
-            {
-                MessageBox.Show("Phone number cannot be empty.");
-                return;
-            }
+            string errors = Validator.ValidCustomer(customerFirstnameTxtBx.Text.Trim(), customerLastnameTxtBx.Text.Trim(),
+                customerEmailTxtBx.Text.Trim(), customerPhoneTxtBx.Text.Trim());
 
-            if (customerFirstnameTxtBx.Text.Trim().Length > 30) //change field in db to be nvarchar(max)
+            if (errors != string.Empty)
             {
-                MessageBox.Show("First name cannot be greater than 30 characters.");
-                return;
-            }
-            if (customerLastnameTxtBx.Text.Trim().Length > 30) //change field in db to be nvarchar(max)
-            {
-                MessageBox.Show("Last name cannot be greater than 30 characters.");
-                return;
-            }
-            if (customerEmailTxtBx.Text.Trim().Length > 50) //change field in db to be nvarchar(max)
-            {
-                MessageBox.Show("Email cannot be greater than 50 characters.");
-                return;
-            }
-
-            Regex nameRegex = new Regex("^[a-zA-Z ]{1,30}$"); //change to be one or more after remove limit in db
-            if (!nameRegex.IsMatch(customerFirstnameTxtBx.Text))
-            {
-                MessageBox.Show("First name can only contain letters and spaces.");
-                return;
-            }
-            if (!nameRegex.IsMatch(customerLastnameTxtBx.Text))
-            {
-                MessageBox.Show("Last name can only contain letters and spaces.");
-                return;
-            }
-            if(!Regex.IsMatch(customerEmailTxtBx.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                MessageBox.Show("Invalid email address.");
-                return;
-            }
-            if (!Regex.IsMatch(customerPhoneTxtBx.Text, "^[0-9]{10}$"))
-            {
-                MessageBox.Show("Phone number must be 10 consecutive digits.");
+                MessageBox.Show(errors);
                 return;
             }
 
