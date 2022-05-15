@@ -14,9 +14,6 @@ using ShopEasy.Infrastructure;
 namespace ShopEasy.UI
 {
     //TODO List: 
-    //encryption
-        //https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator.create?view=net-6.0
-        //https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
     //comments
     //ensure DB has required data & categories (in bin of UI project)
         //Remove all data from local db except admin, admin user, and product categories
