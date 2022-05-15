@@ -98,6 +98,12 @@ namespace ShopEasy.UI
             {
                 dataGridView.Columns.Remove(idNavigation);
             }
+
+            var id = dataGridView.Columns["Id"];
+            if (id != null)
+            {
+                dataGridView.Columns.Remove(id);
+            }
         }
 
         private void populateDataGridView(string table)
