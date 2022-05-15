@@ -1,0 +1,6 @@
+Username|Password
+
+ShopEasyAdmin|Admin123
+TyDunn|password
+TKumo|dogLuver55
+test123|123456789
