@@ -29,7 +29,8 @@ namespace ShopEasy.UI
 
         private void userUpdateBtn_Click(object sender, EventArgs e)
         {
-            Users existingUser = context.Users.FirstOrDefault(u => u.UserName == userUsernameTxtBx.Text.Trim() && u.Id != user.Id);
+            Users existingUser = context.Users.FirstOrDefault(u => u.UserName == userUsernameTxtBx.Text.Trim()
+                && u.Id != user.Id);
             if (existingUser != null)
             {
                 MessageBox.Show("Username has been taken.");

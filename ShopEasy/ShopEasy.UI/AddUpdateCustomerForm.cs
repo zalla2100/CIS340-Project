@@ -55,21 +55,26 @@ namespace ShopEasy.UI
                 return;
             }
 
-            if (isAdd)
-            {
-                Customers existingEmail = context.Customers.Where(c => c.EmailAddress.ToLower() == customerEmailTxtBx.Text.Trim().ToLower()).FirstOrDefault();
-                if (existingEmail != null)
-                {
-                    MessageBox.Show("Email is already in use!");
-                    return;
-                }
+            Customers existingEmail = isAdd ?
+                context.Customers.FirstOrDefault(c => c.EmailAddress.ToLower() == customerEmailTxtBx.Text.Trim().ToLower()) :
+                context.Customers.FirstOrDefault(c => c.EmailAddress.ToLower() == customerEmailTxtBx.Text.Trim().ToLower()
+                    && c.Id != customer.Id);
 
-                Customers existingPhone = context.Customers.Where(c => c.PhoneNumber == customerPhoneTxtBx.Text).FirstOrDefault();
-                if (existingPhone != null)
-                {
-                    MessageBox.Show("Phone number is already in use!");
-                    return;
-                }
+            if (existingEmail != null)
+            {
+                MessageBox.Show("Email is already in use!");
+                return;
+            }
+
+            Customers existingPhone = isAdd ?
+                context.Customers.FirstOrDefault(c => c.PhoneNumber == customerPhoneTxtBx.Text) :
+                context.Customers.FirstOrDefault(c => c.PhoneNumber == customerPhoneTxtBx.Text
+                    && c.Id != customer.Id);
+
+            if (existingPhone != null)
+            {
+                MessageBox.Show("Phone number is already in use!");
+                return;
             }
 
             customer.FirstName = capitalizeName(customerFirstnameTxtBx.Text.Trim());

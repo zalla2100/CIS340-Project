@@ -87,6 +87,17 @@ namespace ShopEasy.UI
                 return;
             }
 
+            Products existingName = isAdd ?
+                context.Products.FirstOrDefault(p => p.Name.ToLower() == productNameTxtBx.Text.Trim().ToLower()) :
+                context.Products.FirstOrDefault(p => p.Name.ToLower() == productNameTxtBx.Text.Trim().ToLower()
+                    && p.Id != product.Id);
+
+            if (existingName != null)
+            {
+                MessageBox.Show("Product name already exists!");
+                return;
+            }
+
             this.product.Name = productNameTxtBx.Text.Trim();
             this.product.Price = productPriceBx.Value;
             this.product.Category = (string)productCategoryList.Items[productCategoryList.SelectedIndex];
