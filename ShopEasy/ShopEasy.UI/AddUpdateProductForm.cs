@@ -130,5 +130,10 @@ namespace ShopEasy.UI
                 this.Close();
             }
         }
+
+        private void productPriceBx_ValueChanged(object sender, EventArgs e)
+        {
+            productPriceBx.Value = Math.Round(productPriceBx.Value, 2);
+        }
     }
 }

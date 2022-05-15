@@ -78,6 +78,7 @@
             this.productPriceBx.Name = "productPriceBx";
             this.productPriceBx.Size = new System.Drawing.Size(138, 27);
             this.productPriceBx.TabIndex = 3;
+            this.productPriceBx.ValueChanged += new System.EventHandler(this.productPriceBx_ValueChanged);
             // 
             // productCategoryLbl
             // 

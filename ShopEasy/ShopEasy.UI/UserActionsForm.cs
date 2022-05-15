@@ -17,11 +17,10 @@ namespace ShopEasy.UI
     //encryption
         //https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator.create?view=net-6.0
         //https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
-    //customer can shop, create invoices (veterans 10% off, seniors 5% off)
-    //better way to view invoices & details for customer/product
     //comments
-    //ensure DB has required data & categories
-    //unit tests?
+    //ensure DB has required data & categories (in bin of project)
+        //Remove all data from local db except admin, admin user, and product categories
+    //maunally test all cases
 
     public partial class UserActionsForm : Form
     {
@@ -30,6 +29,7 @@ namespace ShopEasy.UI
         private const string PRODUCT_UPDATE_BTN_COLUMN = "ProductUpdateBtn";
         private const string CUSTOMER_UPDATE_BTN_COLUMN = "CustomerUpdateBtn";
         private const string USER_UPDATE_BTN_COLUMN = "UserUpdateBtn";
+        private const string ORDER_BTN_COLUMN = "OrderBtn";
 
         private bool isAdmin = false;
         private ShopEasyDBContext context;
@@ -98,12 +98,6 @@ namespace ShopEasy.UI
             {
                 dataGridView.Columns.Remove(idNavigation);
             }
-
-            var id = dataGridView.Columns["Id"];
-            if (id != null)
-            {
-                dataGridView.Columns.Remove(id);
-            }
         }
 
         private void populateDataGridView(string table)
@@ -144,6 +138,7 @@ namespace ShopEasy.UI
             var updateColumnProduct = dataGridView.Columns[PRODUCT_UPDATE_BTN_COLUMN];
             var updateColumnCustomer = dataGridView.Columns[CUSTOMER_UPDATE_BTN_COLUMN];
             var updateColumnUser = dataGridView.Columns[USER_UPDATE_BTN_COLUMN];
+            var orderColumn = dataGridView.Columns[ORDER_BTN_COLUMN];
 
             if (deleteColumnProduct != null)
             {
@@ -164,6 +159,10 @@ namespace ShopEasy.UI
             if (updateColumnUser != null)
             {
                 dataGridView.Columns.Remove(updateColumnUser);
+            }
+            if (orderColumn != null)
+            {
+                dataGridView.Columns.Remove(orderColumn);
             }
         }
 
@@ -194,6 +193,15 @@ namespace ShopEasy.UI
                 updateButton.Text = "Update";
                 updateButton.UseColumnTextForButtonValue = true;
                 dataGridView.Columns.Add(updateButton);
+            }
+            else if (!isAdmin && table == Tables.PRODUCTS)
+            {
+                var orderButton = new DataGridViewButtonColumn();
+                orderButton.Name = ORDER_BTN_COLUMN;
+                orderButton.HeaderText = "";
+                orderButton.Text = "Order";
+                orderButton.UseColumnTextForButtonValue = true;
+                dataGridView.Columns.Add(orderButton);
             }
         }
 
@@ -304,6 +312,7 @@ namespace ShopEasy.UI
             var updateColumnProduct = dataGridView.Columns[PRODUCT_UPDATE_BTN_COLUMN];
             var updateColumnCustomer = dataGridView.Columns[CUSTOMER_UPDATE_BTN_COLUMN];
             var updateColumnUser = dataGridView.Columns[USER_UPDATE_BTN_COLUMN];
+            var orderColumn = dataGridView.Columns[ORDER_BTN_COLUMN];
             var index = dataGridView.Columns["Id"].Index;
             var id = (int)dataGridView.Rows[e.RowIndex].Cells[index].Value;
             
@@ -320,26 +329,25 @@ namespace ShopEasy.UI
             else if (updateColumnProduct != null && e.ColumnIndex == updateColumnProduct.Index)
             {
                 var product = context.Products.Find(id);
-                AddUpdateProductForm addUpdateProductForm = new AddUpdateProductForm(product, ref context);
-                addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateProductForm.Show();
-                this.Enabled = false;
+                Form addUpdateProductForm = new AddUpdateProductForm(product, ref context);
+                this.ShowForm(ref addUpdateProductForm);
             }
             else if (updateColumnCustomer != null && e.ColumnIndex == updateColumnCustomer.Index)
             {
                 var customer = context.Customers.Find(id);
-                AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(customer, ref context);
-                addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateCustomerForm.Show();
-                this.Enabled = false;
+                Form addUpdateCustomerForm = new AddUpdateCustomerForm(customer, ref context);
+                this.ShowForm(ref addUpdateCustomerForm);
             }
             else if (updateColumnUser != null && e.ColumnIndex == updateColumnUser.Index)
             {
                 var user = context.Users.Find(id);
-                UpdateUserForm updateUserForm = new UpdateUserForm(user, ref context);
-                updateUserForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                updateUserForm.Show();
-                this.Enabled = false;
+                Form updateUserForm = new UpdateUserForm(user, ref context);
+                this.ShowForm(ref updateUserForm);
+            }
+            else if (orderColumn != null && e.ColumnIndex == orderColumn.Index)
+            {
+                Form orderForm = new ProductOrderForm(context.Customers.Find(currentUser.Id), id, ref context);
+                this.ShowForm(ref orderForm);
             }
         }
 
@@ -429,6 +437,13 @@ namespace ShopEasy.UI
         private void UserActionsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ShowForm(ref Form form)
+        {
+            form.FormClosed += new FormClosedEventHandler(Form_Closed);
+            form.Show();
+            this.Enabled = false;
         }
     }
 }

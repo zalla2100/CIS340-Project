@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.Core", "ShopEasy.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.Infrastructure", "ShopEasy.Infrastructure\ShopEasy.Infrastructure.csproj", "{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.Test", "ShopEasy.Test\ShopEasy.Test.csproj", "{81F28278-DC42-418B-9C15-3FD1DEA1A280}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEasy.UI", "ShopEasy.UI\ShopEasy.UI.csproj", "{A80AC059-95FC-4259-A084-90A9AD61B7F9}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3472BBFF-FD48-41D7-BB0F-44D7C7B848E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81F28278-DC42-418B-9C15-3FD1DEA1A280}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A80AC059-95FC-4259-A084-90A9AD61B7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A80AC059-95FC-4259-A084-90A9AD61B7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80AC059-95FC-4259-A084-90A9AD61B7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU

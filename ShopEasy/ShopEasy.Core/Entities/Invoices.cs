@@ -15,7 +15,7 @@ namespace ShopEasy.Core
         public int ProductId { get; set; }
 
         [Column(TypeName = "decimal(24, 2)")]
-        public decimal ItemPrice { get; set; }
+        public decimal ItemPrice { get; set; } //current price could be different then price paid at the time of sale
 
         public int Quantity { get; set; }
 
