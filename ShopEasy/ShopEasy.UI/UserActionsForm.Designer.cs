@@ -118,6 +118,7 @@
             // 
             // signOutBtn
             // 
+            this.signOutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.signOutBtn.Location = new System.Drawing.Point(1213, 57);
             this.signOutBtn.Name = "signOutBtn";
             this.signOutBtn.Size = new System.Drawing.Size(95, 29);
