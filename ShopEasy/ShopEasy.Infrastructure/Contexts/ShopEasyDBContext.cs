@@ -6,6 +6,9 @@ using ShopEasy.Core;
 
 namespace ShopEasy.Infrastructure
 {
+    /// <summary>
+    /// Context used by EF Core to communicate with database
+    /// </summary>
     public partial class ShopEasyDBContext : DbContext
     {
         public ShopEasyDBContext()
