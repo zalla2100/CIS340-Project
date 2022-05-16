@@ -12,16 +12,27 @@ using System.Windows.Forms;
 
 namespace ShopEasy.UI
 {
+    /// <summary>
+    /// Form for logging in to the application.
+    /// </summary>
     public partial class LoginForm : Form
     {
         private ShopEasyDBContext context = new ShopEasyDBContext();
         private Users user = null;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Processes user login attempt and opens main form if sucessful
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void loginBtn_Click(object sender, EventArgs e)
         {
             var username = usernameTxtBx.Text;

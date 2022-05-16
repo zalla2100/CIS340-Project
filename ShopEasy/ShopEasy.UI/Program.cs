@@ -12,7 +12,7 @@ namespace ShopEasy.UI
     static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        ///  The main entry point for the application. Initializes with login form.
         /// </summary>
         [STAThread]
         static void Main()

@@ -13,8 +13,12 @@ using ShopEasy.Infrastructure;
 
 namespace ShopEasy.UI
 {
+    /// <summary>
+    /// Main form of the application. Starting point for all user activities.
+    /// </summary>
     public partial class UserActionsForm : Form
     {
+        //Constants for button columns
         private const string PRODUCT_DELETE_BTN_COLUMN = "ProductDeleteBtn";
         private const string CUSTOMER_DELETE_BTN_COLUMN = "CustomerDeleteBtn";
         private const string PRODUCT_UPDATE_BTN_COLUMN = "ProductUpdateBtn";
@@ -22,10 +26,16 @@ namespace ShopEasy.UI
         private const string USER_UPDATE_BTN_COLUMN = "UserUpdateBtn";
         private const string ORDER_BTN_COLUMN = "OrderBtn";
 
+        //Fields
         private bool isAdmin = false;
         private ShopEasyDBContext context;
         private Users currentUser;
         
+        /// <summary>
+        /// Constructor. Initializes the form and determines what tables the user has access to.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="context"></param>
         public UserActionsForm(Users user, ref ShopEasyDBContext context)
         {
             InitializeComponent();
@@ -46,6 +56,9 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Removes extra columns created by EF Core from datagridview
+        /// </summary>
         private void removeExtraColumns()
         {
             var admin = dataGridView.Columns["Admin"];
@@ -91,6 +104,10 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Fills datagridview based on given table
+        /// </summary>
+        /// <param name="table"></param>
         private void populateDataGridView(string table)
         {
             switch (table)
@@ -114,6 +131,9 @@ namespace ShopEasy.UI
             removeExtraColumns();
         }
 
+        /// <summary>
+        /// Loads context from DB
+        /// </summary>
         private void loadData()
         {
             context.Products.Load();
@@ -122,6 +142,9 @@ namespace ShopEasy.UI
             context.Invoices.Load();
         }
 
+        /// <summary>
+        /// Removes all button columns from datagridview
+        /// </summary>
         private void removeButtons()
         {
             var deleteColumnProduct = dataGridView.Columns[PRODUCT_DELETE_BTN_COLUMN];
@@ -157,6 +180,10 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Adds appropiate button columns to datagridview based on given table
+        /// </summary>
+        /// <param name="table"></param>
         private void addButtons(string table)
         {
             if (isAdmin && (table == Tables.PRODUCTS || table == Tables.CUSTOMERS))
@@ -196,6 +223,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Updates datagridview according to selected table. Search and add functionality is toggled accordingly.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tableViewCmboBx_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeButtons();
@@ -235,6 +267,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Filters current table's data based on search term.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchBtn_Click(object sender, EventArgs e)
         {
             string term = searchTxtBx.Text.Trim().ToLower();
@@ -244,7 +281,7 @@ namespace ShopEasy.UI
 
             if (string.IsNullOrWhiteSpace(term))
             {
-                //do no filtering, retrieve all rows
+                //Do no filtering, retrieve all rows
                 populateDataGridView(table);
                 return;
             }
@@ -280,6 +317,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Triggers search function upon enter key press
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchTxtBx_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -289,9 +331,14 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Determines column of user click. Triggers appropiate functionality (delete, update, order) and form if relevant.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if click is on new row or header row
+            //If click is on new row or header row
             if (e.RowIndex == dataGridView.NewRowIndex || e.RowIndex < 0)
             {
                 return;
@@ -342,6 +389,10 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Displays confirmation dialog then deletes given product and any associated invoices.
+        /// </summary>
+        /// <param name="id"></param>
         private void deleteProduct(int id)
         {
             var product = context.Products.Find(id);
@@ -365,6 +416,10 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Displays confirmation dialog then deletes given customer, associated user, and any associated invoices.
+        /// </summary>
+        /// <param name="id"></param>
         private void deleteCustomer(int id)
         {
             var customer = context.Customers.Find(id);
@@ -390,6 +445,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Triggers appropiate form to add/insert new data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addBtn_Click(object sender, EventArgs e)
         {
             int index = tableViewCmboBx.SelectedIndex;
@@ -397,20 +457,21 @@ namespace ShopEasy.UI
 
             if (table == Tables.PRODUCTS)
             {
-                AddUpdateProductForm addUpdateProductForm = new AddUpdateProductForm(null, ref context);
-                addUpdateProductForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateProductForm.Show();
-                this.Enabled = false;
+                Form addUpdateProductForm = new AddUpdateProductForm(null, ref context);
+                ShowForm(ref addUpdateProductForm);
             }
             else if (table == Tables.CUSTOMERS)
             {
-                AddUpdateCustomerForm addUpdateCustomerForm = new AddUpdateCustomerForm(null, ref context);
-                addUpdateCustomerForm.FormClosed += new FormClosedEventHandler(Form_Closed);
-                addUpdateCustomerForm.Show();
-                this.Enabled = false;
+                Form addUpdateCustomerForm = new AddUpdateCustomerForm(null, ref context);
+                ShowForm(ref addUpdateCustomerForm);
             }
         }
 
+        /// <summary>
+        /// Updates datagridview to reflect user's last action and enables this form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
             int index = tableViewCmboBx.SelectedIndex;
@@ -419,17 +480,31 @@ namespace ShopEasy.UI
             this.Enabled = true;
         }
 
+        /// <summary>
+        /// Redirects user to login form and begins new login process. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void signOutBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
             new LoginForm().Show();
         }
 
+        /// <summary>
+        /// Closes the entire application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserActionsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Displays given form and disables this form.
+        /// </summary>
+        /// <param name="form"></param>
         private void ShowForm(ref Form form)
         {
             form.FormClosed += new FormClosedEventHandler(Form_Closed);
