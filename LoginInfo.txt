@@ -2,5 +2,11 @@ Username|Password
 
 ShopEasyAdmin|Admin123
 TyDunn|password
-TKumo|dogLuver55
-test123|123456789
+TyWillhelm|golfin4dayz
+TakeyaK|dogLuver55
+JakeB1|#in@bootcamp!
+LisaV9|1db329ca
+TroyA2|007d7cbe
+MorganH|042d32a2
+NickBudd7|c5eb7f23
+JoshuaM|da437932

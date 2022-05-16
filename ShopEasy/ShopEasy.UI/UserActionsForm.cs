@@ -15,9 +15,6 @@ namespace ShopEasy.UI
 {
     //TODO List: 
     //comments
-    //ensure DB has required data & categories (in bin of UI project)
-        //Remove all data from local db except admin, admin user, and product categories
-    //maunally test all cases
 
     public partial class UserActionsForm : Form
     {

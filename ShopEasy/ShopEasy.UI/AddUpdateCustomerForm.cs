@@ -90,6 +90,11 @@ namespace ShopEasy.UI
                 {
                     Users user = new Users();
                     var usernameBase = $"{customer.FirstName.Replace(" ", "")}{customer.LastName[0]}";
+                    if (usernameBase.Length < 6)
+                    {
+                        string ticks = DateTime.Now.Ticks.ToString();
+                        usernameBase += ticks[^(6-usernameBase.Length)..^0];
+                    }
                     var username = usernameBase;
                     var counter = 2;
                     Users existingUser = context.Users.Where(u => u.UserName == username).FirstOrDefault();
