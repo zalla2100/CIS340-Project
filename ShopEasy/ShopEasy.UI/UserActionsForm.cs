@@ -390,7 +390,7 @@ namespace ShopEasy.UI
         }
 
         /// <summary>
-        /// Displays confirmation dialog then deletes given product and any associated invoices.
+        /// Displays confirmation dialog. If confirmed, deletes given product and any associated invoices.
         /// </summary>
         /// <param name="id"></param>
         private void deleteProduct(int id)
@@ -417,7 +417,7 @@ namespace ShopEasy.UI
         }
 
         /// <summary>
-        /// Displays confirmation dialog then deletes given customer, associated user, and any associated invoices.
+        /// Displays confirmation dialog. If confirmed, deletes given customer, associated user, and any associated invoices.
         /// </summary>
         /// <param name="id"></param>
         private void deleteCustomer(int id)

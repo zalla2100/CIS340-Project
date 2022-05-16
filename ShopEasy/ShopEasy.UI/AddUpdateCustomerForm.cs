@@ -12,12 +12,21 @@ using System.Windows.Forms;
 
 namespace ShopEasy.UI
 {
+    /// <summary>
+    /// Form for adding and updating customers
+    /// </summary>
     public partial class AddUpdateCustomerForm : Form
     {
+        //Fields
         private ShopEasyDBContext context;
         private Customers customer;
         private bool isAdd;
 
+        /// <summary>
+        /// Constructor. Initializes form based on desired action and if applicable, prepopulates controls using the selected customer.
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="context"></param>
         public AddUpdateCustomerForm(Customers customer, ref ShopEasyDBContext context)
         {
             InitializeComponent();
@@ -44,6 +53,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Validates customer, displaying any errors. If valid, generates a new user and associates new customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void customerAddUpdateBtn_Click(object sender, EventArgs e)
         {
             string errors = Validator.ValidCustomer(customerFirstnameTxtBx.Text.Trim(), customerLastnameTxtBx.Text.Trim(),
@@ -92,24 +106,26 @@ namespace ShopEasy.UI
                     var usernameBase = $"{customer.FirstName.Replace(" ", "")}{customer.LastName[0]}";
                     if (usernameBase.Length < 6)
                     {
+                        //ensure username is at least 6 characters
                         string ticks = DateTime.Now.Ticks.ToString();
+                        //substring starting at the end with however many additional characters is neccesary
                         usernameBase += ticks[^(6-usernameBase.Length)..^0];
                     }
                     var username = usernameBase;
                     var counter = 2;
                     Users existingUser = context.Users.Where(u => u.UserName == username).FirstOrDefault();
-                    while (existingUser != null)
+                    while (existingUser != null) //loop until find an unused username
                     {
                         username = $"{usernameBase}{counter}";
                         existingUser = context.Users.Where(u => u.UserName == username).FirstOrDefault();
                         counter++;
                     }
                     user.UserName = username;
-                    user.Password = Guid.NewGuid().ToString()[..8];
+                    user.Password = Guid.NewGuid().ToString()[..8]; //substring of 8 chars
                     context.Users.Add(user);
                     context.SaveChanges();
 
-                    customer.Id = user.Id;
+                    customer.Id = user.Id; //use new user id to associate new customer object
                     context.Customers.Add(customer);
 
                     context.SaveChanges();
@@ -135,6 +151,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Displays confirmation. If confirmed, closes the form and all modifications are lost.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show($"Are you sure you want to cancel?\nYou have unsaved changes.",
@@ -145,6 +166,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Capitalizes all words in space delimited string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>A string</returns>
         private string capitalizeName(string name)
         {
             name = name.ToLower();

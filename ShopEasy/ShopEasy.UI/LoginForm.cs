@@ -70,6 +70,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Closes the entire application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

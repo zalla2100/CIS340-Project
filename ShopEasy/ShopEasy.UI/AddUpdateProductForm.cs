@@ -11,12 +11,20 @@ using System.Windows.Forms;
 
 namespace ShopEasy.UI
 {
+    /// <summary>
+    /// Form for adding and updating products
+    /// </summary>
     public partial class AddUpdateProductForm : Form
     {
         private ShopEasyDBContext context;
         private Products product;
         private bool isAdd;
 
+        /// <summary>
+        /// Constructor. Initializes form based on desired action and if applicable, prepopulates controls using the selected product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="context"></param>
         public AddUpdateProductForm(Products product, ref ShopEasyDBContext context)
         {
             InitializeComponent();
@@ -26,6 +34,7 @@ namespace ShopEasy.UI
             this.product = product == null ? new Products() : product;
 
             productCategoryList.Items.Clear();
+            //Populate category list with all main categories
             productCategoryList.Items.AddRange(context.ProductCategories.Where(x => x.ParentId == null).Select(x => x.Name).ToArray());
 
             if(!isAdd)
@@ -38,6 +47,7 @@ namespace ShopEasy.UI
 
                 productSubcategoryList.Items.Clear();
                 var categoryId = context.ProductCategories.FirstOrDefault(x => x.ParentId == null && x.Name == product.Category).Id;
+                //Find all child/sub categories
                 var subCategories = context.ProductCategories.Where(x => x.ParentId == categoryId).Select(x => x.Name); 
                 if(subCategories.Count() > 0)
                 {
@@ -57,6 +67,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Updates the list of sub categories based on the selected main category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void productCategoryList_SelectedIndexChanged(object sender, EventArgs e)
         {
             productSubcategoryList.Items.Clear();
@@ -76,6 +91,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Validates product, displaying any errors. If valid, adds or updates product accordingly.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void productAddUpdateBtn_Click(object sender, EventArgs e)
         {
             string errors = Validator.ValidProduct(productNameTxtBx.Text.Trim(), productCategoryList.SelectedIndex,
@@ -132,6 +152,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Displays confirmation. If confirmed, closes the form and all modifications are lost.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void productCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show($"Are you sure you want to cancel?\nYou have unsaved changes.",
@@ -142,6 +167,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Rounds entered value for product price to ensure two decimal places.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void productPriceBx_ValueChanged(object sender, EventArgs e)
         {
             productPriceBx.Value = Math.Round(productPriceBx.Value, 2);

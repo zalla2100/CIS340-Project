@@ -11,11 +11,20 @@ using System.Windows.Forms;
 
 namespace ShopEasy.UI
 {
+    /// <summary>
+    /// Form for updating users
+    /// </summary>
     public partial class UpdateUserForm : Form
     {
+        //Fields
         private ShopEasyDBContext context;
         private Users user;
 
+        /// <summary>
+        /// Constructor. Ininitalizes form by prepopulating controls based on selected user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="context"></param>
         public UpdateUserForm(Users user, ref ShopEasyDBContext context)
         {
             InitializeComponent();
@@ -27,6 +36,11 @@ namespace ShopEasy.UI
             userConfirmPasswordTxtBx.Text = user.Password;
         }
 
+        /// <summary>
+        /// Validates user, displaying errors if any. If valid, updates user accordingly. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void userUpdateBtn_Click(object sender, EventArgs e)
         {
             Users existingUser = context.Users.FirstOrDefault(u => u.UserName == userUsernameTxtBx.Text.Trim()
@@ -65,6 +79,11 @@ namespace ShopEasy.UI
             }
         }
 
+        /// <summary>
+        /// Displays confirmation. If confirmed, closes the form and all modifications are lost.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show($"Are you sure you want to cancel?\nYou have unsaved changes.",
