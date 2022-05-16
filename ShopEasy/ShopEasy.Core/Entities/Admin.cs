@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopEasy.Core
 {
+    /// <summary>
+    /// Class for Admin table, used to provision admin access and mimic AD groups
+    /// </summary>
     public partial class Admin
     {
         [Key]

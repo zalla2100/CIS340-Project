@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopEasy.Core
 {
+    /// <summary>
+    /// Class for ProductCategories table
+    /// </summary>
     public partial class ProductCategories
     {
         public ProductCategories()

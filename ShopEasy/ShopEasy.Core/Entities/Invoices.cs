@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopEasy.Core
 {
+    /// <summary>
+    /// Class for the Invoices tables
+    /// </summary>
     public partial class Invoices
     {
         [Key]
@@ -15,7 +18,7 @@ namespace ShopEasy.Core
         public int ProductId { get; set; }
 
         [Column(TypeName = "decimal(24, 2)")]
-        public decimal ItemPrice { get; set; } //current price could be different then price paid at the time of sale
+        public decimal ItemPrice { get; set; } //current price could be different from price paid at the time of sale
 
         public int Quantity { get; set; }
 

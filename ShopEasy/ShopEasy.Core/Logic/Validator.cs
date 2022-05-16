@@ -5,11 +5,19 @@ using System.Text.RegularExpressions;
 
 namespace ShopEasy.Core
 {
+    /// <summary>
+    /// Validate user input from various forms
+    /// </summary>
     public static class Validator
     {
         static readonly Regex PasswordRegex = new Regex("^[a-zA-Z0-9 " + Regex.Escape("!@#$%^&*-?") + "]{8,24}$");
         static readonly Regex UsernameRegex = new Regex("^[a-zA-Z0-9]{6,16}$");
 
+        /// <summary>
+        /// Validates user password
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns>A string describing errors, if any</returns>
         public static string ValidPassword(string password)
         {
             StringBuilder builder = new StringBuilder();
@@ -33,6 +41,11 @@ namespace ShopEasy.Core
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Validates username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>A string describing errors, if any</returns>
         public static string ValidUsername(string username)
         {
             StringBuilder builder = new StringBuilder();
@@ -56,6 +69,12 @@ namespace ShopEasy.Core
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Validates user credential against given regex
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="regex"></param>
+        /// <returns>A boolean indicating if regex matches</returns>
         private static bool ValidUserCredential(string value, Regex regex)
         {
             if (value != null)
@@ -73,6 +92,14 @@ namespace ShopEasy.Core
             return false;
         }
 
+        /// <summary>
+        /// Validates product
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="categoryIndex"></param>
+        /// <param name="subCategoryEnabled"></param>
+        /// <param name="subCategoryIndex"></param>
+        /// <returns>A string describing errors, if any</returns>
         public static string ValidProduct(string name, int categoryIndex, bool subCategoryEnabled, int subCategoryIndex)
         {
             StringBuilder builder = new StringBuilder();
@@ -98,6 +125,14 @@ namespace ShopEasy.Core
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Validates customer
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="email"></param>
+        /// <param name="phone"></param>
+        /// <returns>A string describing errors, if any</returns>
         public static string ValidCustomer(string firstname, string lastname, string email, string phone)
         {
             StringBuilder builder = new StringBuilder();

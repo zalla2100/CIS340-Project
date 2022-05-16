@@ -13,9 +13,6 @@ using ShopEasy.Infrastructure;
 
 namespace ShopEasy.UI
 {
-    //TODO List: 
-    //comments
-
     public partial class UserActionsForm : Form
     {
         private const string PRODUCT_DELETE_BTN_COLUMN = "ProductDeleteBtn";
